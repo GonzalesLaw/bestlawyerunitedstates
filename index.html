@@ -3,39 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mark Gonzales — Personal Injury Lawyer</title>
+  <title>Mark Gonzales, Esq. — Personal Injury Lawyer | Gonzales Law Offices</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0a0e1a;
-      --surface: rgba(255,255,255,0.05);
-      --surface-hover: rgba(255,255,255,0.10);
-      --border: rgba(255,255,255,0.10);
-      --gold: #c8a84b;
-      --gold-light: #e8c96a;
-      --white: #ffffff;
-      --muted: rgba(255,255,255,0.55);
-      --radius: 14px;
+      --red:      #c42727;
+      --red-dark: #a01f1f;
+      --red-glow: rgba(196,39,39,0.35);
+      --navy:     #0d1f3c;
+      --navy2:    #162d52;
+      --white:    #ffffff;
+      --offwhite: #f8f4f0;
+      --gold:     #c8a84b;
+      --gold-lt:  #e2c46a;
+      --text:     #1a1a1a;
+      --muted:    rgba(255,255,255,0.55);
+      --surface:  rgba(255,255,255,0.06);
+      --border:   rgba(255,255,255,0.12);
+      --radius:   12px;
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
+      font-family: 'Poppins', sans-serif;
+      background: #0a0d1a;
       color: var(--white);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 48px 16px 64px;
+      padding: 0 0 60px;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* ── Courtroom background ── */
+    /* ══════════════════════════════════════════
+       COURTROOM BACKGROUND
+    ══════════════════════════════════════════ */
     #courtroom-bg {
       position: fixed;
       inset: 0;
@@ -45,7 +54,6 @@
       pointer-events: none;
     }
 
-    /* Dark overlay so content stays readable */
     body::after {
       content: '';
       position: fixed;
@@ -53,98 +61,244 @@
       z-index: -1;
       background:
         linear-gradient(to bottom,
-          rgba(6,8,18,0.72) 0%,
-          rgba(6,8,18,0.60) 40%,
-          rgba(6,8,18,0.75) 100%),
-        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(200,168,75,0.20) 0%, transparent 55%);
+          rgba(6,8,18,0.80) 0%,
+          rgba(6,8,18,0.65) 35%,
+          rgba(6,8,18,0.78) 100%);
       pointer-events: none;
     }
 
-    /* ── Profile ── */
-    .profile {
+    /* ══════════════════════════════════════════
+       TOP BANNER
+    ══════════════════════════════════════════ */
+    .top-banner {
+      width: 100%;
+      background: var(--red);
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      position: relative;
+      z-index: 10;
+    }
+    .top-banner a { color: var(--white); text-decoration: none; }
+    .top-banner a:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════════════════
+       HEADER / LOGO
+    ══════════════════════════════════════════ */
+    .site-header {
+      width: 100%;
+      max-width: 520px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 32px;
+      padding: 36px 16px 24px;
+      gap: 6px;
       text-align: center;
     }
 
-    .avatar {
-      width: 96px;
-      height: 96px;
+    .logo-badge {
+      width: 88px;
+      height: 88px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), #7a5c1e);
+      background: linear-gradient(145deg, #c42727, #7a1515);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
-      font-weight: 800;
-      color: var(--bg);
       border: 3px solid var(--gold);
-      box-shadow: 0 0 30px rgba(200,168,75,0.4);
+      box-shadow: 0 0 0 6px rgba(196,39,39,0.18), 0 8px 32px rgba(196,39,39,0.35);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white);
       letter-spacing: -1px;
-      user-select: none;
+      margin-bottom: 4px;
+      position: relative;
+    }
+    .logo-badge::after {
+      content: '⚖';
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      font-size: 18px;
+      background: var(--gold);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #0a0d1a;
     }
 
-    .profile-name {
+    .firm-name {
       font-size: 22px;
       font-weight: 800;
+      line-height: 1.1;
       letter-spacing: -0.3px;
     }
+    .firm-name span { color: var(--red); }
 
-    .profile-handle {
-      font-size: 14px;
-      color: var(--gold-light);
+    .firm-esq {
+      font-size: 13px;
+      color: var(--gold-lt);
       font-weight: 500;
+      letter-spacing: 0.5px;
     }
 
-    .profile-bio {
-      font-size: 13.5px;
+    .firm-tagline {
+      font-size: 13px;
       color: var(--muted);
-      max-width: 320px;
-      line-height: 1.6;
+      font-style: italic;
+      margin-top: 4px;
+      font-weight: 400;
     }
 
-    /* ── Badge row ── */
+    /* ══════════════════════════════════════════
+       STAT STRIP
+    ══════════════════════════════════════════ */
+    .stat-strip {
+      width: 100%;
+      max-width: 520px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 0 16px;
+      margin-bottom: 20px;
+    }
+    .stat-card {
+      background: rgba(196,39,39,0.12);
+      border: 1px solid rgba(196,39,39,0.25);
+      border-radius: var(--radius);
+      padding: 14px 10px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+    }
+    .stat-num sup { font-size: 12px; }
+    .stat-label {
+      font-size: 10px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 3px;
+      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* ══════════════════════════════════════════
+       BADGE ROW
+    ══════════════════════════════════════════ */
     .badges {
       display: flex;
-      gap: 8px;
+      gap: 7px;
       flex-wrap: wrap;
       justify-content: center;
-      margin-bottom: 32px;
+      padding: 0 16px;
+      margin-bottom: 24px;
     }
-
     .badge {
-      background: rgba(200,168,75,0.12);
-      border: 1px solid rgba(200,168,75,0.3);
-      color: var(--gold-light);
+      background: rgba(200,168,75,0.10);
+      border: 1px solid rgba(200,168,75,0.28);
+      color: var(--gold-lt);
       border-radius: 100px;
       padding: 4px 12px;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.4px;
     }
-
-    /* ── Links ── */
-    .links {
-      width: 100%;
-      max-width: 480px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    .badge.red {
+      background: rgba(196,39,39,0.12);
+      border-color: rgba(196,39,39,0.3);
+      color: #ff8a8a;
     }
 
-    .section-label {
-      font-size: 10px;
+    /* ══════════════════════════════════════════
+       PRIMARY CTA
+    ══════════════════════════════════════════ */
+    .cta-wrap {
+      width: 100%;
+      max-width: 520px;
+      padding: 0 16px 8px;
+    }
+    .call-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      transition: filter 0.15s, transform 0.12s;
+      box-shadow: 0 8px 28px var(--red-glow);
+      width: 100%;
+    }
+    .call-bar:hover { filter: brightness(1.10); transform: translateY(-1px); }
+    .call-icon {
+      width: 42px; height: 42px;
+      background: rgba(0,0,0,0.22);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .call-sub {
+      display: block;
+      font-size: 12px; font-weight: 400;
+      opacity: 0.75; margin-top: 2px;
+    }
+    .call-free {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════════
+       SECTION HEADERS
+    ══════════════════════════════════════════ */
+    .section-header {
+      width: 100%;
+      max-width: 520px;
+      padding: 28px 16px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-header h2 {
+      font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      font-weight: 600;
-      margin-top: 8px;
-      margin-bottom: -2px;
-      padding-left: 4px;
+      letter-spacing: 2px;
+      color: var(--red);
+      font-weight: 700;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(196,39,39,0.25);
+    }
+
+    /* ══════════════════════════════════════════
+       LINK BUTTONS
+    ══════════════════════════════════════════ */
+    .links {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0 16px;
     }
 
     .link-btn {
@@ -154,159 +308,283 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px 18px;
+      padding: 15px 18px;
       color: var(--white);
       text-decoration: none;
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 600;
+      font-family: 'Poppins', sans-serif;
       transition: background 0.18s, border-color 0.18s, transform 0.12s, box-shadow 0.18s;
       cursor: pointer;
       position: relative;
       overflow: hidden;
     }
-
     .link-btn::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(200,168,75,0.06), transparent);
+      background: linear-gradient(90deg, rgba(196,39,39,0.06), transparent);
       opacity: 0;
       transition: opacity 0.18s;
     }
-
     .link-btn:hover {
-      background: var(--surface-hover);
-      border-color: rgba(200,168,75,0.4);
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(196,39,39,0.45);
       transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(200,168,75,0.12);
+      box-shadow: 0 6px 22px rgba(196,39,39,0.14);
     }
-
     .link-btn:hover::before { opacity: 1; }
+    .link-btn:active { transform: none; box-shadow: none; }
 
-    .link-btn:active {
-      transform: translateY(0px);
-      box-shadow: none;
+    .link-btn.primary-link {
+      background: rgba(196,39,39,0.08);
+      border-color: rgba(196,39,39,0.22);
+    }
+    .link-btn.primary-link:hover {
+      background: rgba(196,39,39,0.16);
+      border-color: rgba(196,39,39,0.5);
     }
 
     .link-icon {
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 18px;
     }
-
-    .link-text { flex: 1; }
+    .link-text { flex: 1; line-height: 1.3; }
     .link-title { display: block; }
     .link-sub {
-      display: block;
-      font-size: 12px;
+      display: block; font-size: 11.5px;
+      font-weight: 400; color: var(--muted);
+      margin-top: 2px;
+    }
+    .link-arrow {
+      color: var(--muted); font-size: 18px;
+      transition: transform 0.15s, color 0.15s; flex-shrink: 0;
+    }
+    .link-btn:hover .link-arrow { transform: translateX(3px); color: var(--red); }
+
+    /* icon colors */
+    .icon-red    { background: rgba(196,39,39,0.15); color: #ff8a8a; }
+    .icon-gold   { background: rgba(200,168,75,0.15); color: var(--gold-lt); }
+    .icon-blue   { background: rgba(29,155,240,0.15); color: #5bc4ff; }
+    .icon-green  { background: rgba(37,211,102,0.15); color: #4ddb80; }
+    .icon-fb     { background: rgba(24,119,242,0.15); color: #5b9cf6; }
+    .icon-pink   { background: rgba(228,64,95,0.15);  color: #f07090; }
+    .icon-dark   { background: rgba(255,255,255,0.07); color: #ccc; }
+    .icon-yelp   { background: rgba(175,0,51,0.15);   color: #ff7b7b; }
+    .icon-li     { background: rgba(0,119,181,0.15);  color: #5ba3c9; }
+    .icon-navy   { background: rgba(13,31,60,0.4);    color: #8ab4d4; }
+
+    /* ══════════════════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════════════════ */
+    .testimonials {
+      width: 100%;
+      max-width: 520px;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .testimonial-card {
+      background: rgba(13,31,60,0.55);
+      border: 1px solid rgba(200,168,75,0.18);
+      border-left: 3px solid var(--red);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+    }
+    .testimonial-stars {
+      color: var(--gold-lt);
+      font-size: 13px;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+    .testimonial-text {
+      font-size: 13px;
       font-weight: 400;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.65;
+      font-style: italic;
+    }
+    .testimonial-author {
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold-lt);
+    }
+    .testimonial-type {
+      font-size: 10.5px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 6px;
+    }
+
+    /* ══════════════════════════════════════════
+       LOCATIONS
+    ══════════════════════════════════════════ */
+    .locations {
+      width: 100%;
+      max-width: 520px;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .location-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 15px;
+    }
+    .location-city {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .location-city::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--red);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .location-addr {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════
+       CERTIFICATIONS ROW
+    ══════════════════════════════════════════ */
+    .certs {
+      width: 100%;
+      max-width: 520px;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cert-row {
+      background: rgba(13,31,60,0.5);
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cert-icon {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      background: rgba(200,168,75,0.12);
+      border: 1px solid rgba(200,168,75,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .cert-text { flex: 1; }
+    .cert-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .cert-sub {
+      font-size: 11px;
       color: var(--muted);
       margin-top: 2px;
     }
 
-    .link-arrow {
-      color: var(--muted);
-      font-size: 16px;
-      transition: transform 0.15s, color 0.15s;
-      flex-shrink: 0;
-    }
-    .link-btn:hover .link-arrow {
-      transform: translateX(3px);
-      color: var(--gold-light);
-    }
-
-    /* icon backgrounds */
-    .icon-gold    { background: rgba(200,168,75,0.15); color: var(--gold-light); }
-    .icon-blue    { background: rgba(29,155,240,0.15); color: #1da1f2; }
-    .icon-green   { background: rgba(37,211,102,0.15); color: #25d366; }
-    .icon-red     { background: rgba(255,0,0,0.12);    color: #ff4444; }
-    .icon-purple  { background: rgba(138,43,226,0.15); color: #c77dff; }
-    .icon-fb      { background: rgba(24,119,242,0.15); color: #1877f2; }
-    .icon-pink    { background: rgba(228,64,95,0.15);  color: #e4405f; }
-    .icon-dark    { background: rgba(255,255,255,0.08); color: #e5e5e5; }
-    .icon-yelp    { background: rgba(175,0,51,0.15);   color: #af0033; }
-    .icon-li      { background: rgba(0,119,181,0.15);  color: #0077b5; }
-
-    /* ── Social strip ── */
+    /* ══════════════════════════════════════════
+       SOCIAL STRIP
+    ══════════════════════════════════════════ */
     .social-strip {
       display: flex;
       gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 32px;
+      padding: 0 16px;
+      margin-top: 8px;
     }
-
     .social-btn {
-      width: 44px;
-      height: 44px;
+      width: 44px; height: 44px;
       border-radius: 50%;
       border: 1px solid var(--border);
       background: var(--surface);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
       text-decoration: none;
       transition: background 0.15s, border-color 0.15s, transform 0.12s;
     }
     .social-btn:hover {
-      background: var(--surface-hover);
-      border-color: rgba(200,168,75,0.4);
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(196,39,39,0.4);
       transform: translateY(-2px);
     }
 
-    /* ── Footer ── */
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
     footer {
-      margin-top: 40px;
-      font-size: 11.5px;
+      margin-top: 36px;
+      font-size: 11px;
       color: rgba(255,255,255,0.2);
       text-align: center;
+      padding: 0 16px;
+      line-height: 1.8;
+    }
+    footer a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    footer a:hover { color: rgba(255,255,255,0.5); }
+
+    /* ══════════════════════════════════════════
+       LANGUAGE TOGGLE
+    ══════════════════════════════════════════ */
+    .lang-toggle {
+      position: fixed;
+      top: 44px;
+      right: 14px;
+      z-index: 20;
+      display: flex;
+      gap: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lang-btn {
+      background: rgba(0,0,0,0.45);
+      color: rgba(255,255,255,0.6);
+      border: none;
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-btn.active {
+      background: var(--red);
+      color: white;
+    }
+    .lang-btn:hover:not(.active) { background: rgba(255,255,255,0.10); color: white; }
+
+    /* ══════════════════════════════════════════
+       DIVIDER
+    ══════════════════════════════════════════ */
+    .divider {
+      width: 100%;
+      max-width: 520px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(196,39,39,0.3), transparent);
+      margin: 4px 0;
     }
 
-    /* ── Call bar ── */
-    .call-bar {
-      width: 100%;
-      max-width: 480px;
-      background: linear-gradient(135deg, #c8a84b, #a07a28);
-      border-radius: var(--radius);
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: #0a0e1a;
-      font-weight: 700;
-      font-size: 16px;
-      transition: filter 0.15s, transform 0.12s;
-      box-shadow: 0 8px 28px rgba(200,168,75,0.3);
-      margin-bottom: 12px;
-    }
-    .call-bar:hover {
-      filter: brightness(1.08);
-      transform: translateY(-1px);
-    }
-    .call-icon {
-      width: 42px;
-      height: 42px;
-      background: rgba(0,0,0,0.2);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-    .call-sub {
-      display: block;
-      font-size: 12px;
-      font-weight: 500;
-      opacity: 0.7;
-      margin-top: 1px;
+    @media (max-width: 400px) {
+      .stat-strip { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+      .stat-num { font-size: 17px; }
+      .locations { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -315,7 +593,6 @@
   <!-- ═══ Courtroom Background SVG ═══ -->
   <svg id="courtroom-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
     <defs>
-      <!-- Wood grain gradient – dark walnut -->
       <linearGradient id="woodWall" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%"   stop-color="#1a0e06"/>
         <stop offset="8%"   stop-color="#2c1a0a"/>
@@ -328,89 +605,67 @@
         <stop offset="92%"  stop-color="#1a0e06"/>
         <stop offset="100%" stop-color="#120a04"/>
       </linearGradient>
-
       <linearGradient id="woodFloor" x1="0%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%"   stop-color="#2a1a08"/>
         <stop offset="40%"  stop-color="#1e1206"/>
         <stop offset="100%" stop-color="#0e0804"/>
       </linearGradient>
-
-      <linearGradient id="woodPanel" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%"   stop-color="#4a2e12"/>
-        <stop offset="25%"  stop-color="#5c3a18"/>
-        <stop offset="50%"  stop-color="#6b4520"/>
-        <stop offset="75%"  stop-color="#5c3a18"/>
-        <stop offset="100%" stop-color="#4a2e12"/>
-      </linearGradient>
-
       <linearGradient id="benchGrad" x1="0%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%"   stop-color="#7a4e22"/>
         <stop offset="30%"  stop-color="#5c3a16"/>
         <stop offset="100%" stop-color="#3a2410"/>
       </linearGradient>
-
       <linearGradient id="columnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%"   stop-color="#2a1e10"/>
         <stop offset="30%"  stop-color="#4a3420"/>
         <stop offset="60%"  stop-color="#5a4228"/>
         <stop offset="100%" stop-color="#2a1e10"/>
       </linearGradient>
-
       <linearGradient id="windowLight" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%"  stop-color="#d4a84b" stop-opacity="0.30"/>
-        <stop offset="50%" stop-color="#e8c96a" stop-opacity="0.12"/>
-        <stop offset="100%" stop-color="#c8a84b" stop-opacity="0.02"/>
+        <stop offset="0%"   stop-color="#c42727" stop-opacity="0.20"/>
+        <stop offset="50%"  stop-color="#e84040" stop-opacity="0.07"/>
+        <stop offset="100%" stop-color="#c42727" stop-opacity="0.01"/>
       </linearGradient>
-
       <linearGradient id="windowGlass" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%"  stop-color="#8ab4c8" stop-opacity="0.18"/>
-        <stop offset="40%" stop-color="#d4e8f0" stop-opacity="0.25"/>
-        <stop offset="100%" stop-color="#6090aa" stop-opacity="0.12"/>
+        <stop offset="0%"   stop-color="#8ab4c8" stop-opacity="0.15"/>
+        <stop offset="40%"  stop-color="#d4e8f0" stop-opacity="0.22"/>
+        <stop offset="100%" stop-color="#6090aa" stop-opacity="0.10"/>
       </linearGradient>
-
       <linearGradient id="ceilGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%"   stop-color="#0c0806"/>
-        <stop offset="100%" stop-color="#1a1208"/>
+        <stop offset="0%"   stop-color="#08060a"/>
+        <stop offset="100%" stop-color="#140c0e"/>
       </linearGradient>
-
-      <radialGradient id="chandelierGlow" cx="50%" cy="0%" r="60%">
-        <stop offset="0%"   stop-color="#d4a84b" stop-opacity="0.35"/>
-        <stop offset="100%" stop-color="#c8a84b" stop-opacity="0"/>
+      <radialGradient id="chandelierGlow" cx="50%" cy="0%" r="55%">
+        <stop offset="0%"   stop-color="#c42727" stop-opacity="0.28"/>
+        <stop offset="100%" stop-color="#c42727" stop-opacity="0"/>
       </radialGradient>
-
       <linearGradient id="pewGrad" x1="0%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%"   stop-color="#3a2410"/>
         <stop offset="100%" stop-color="#221408"/>
       </linearGradient>
-
       <filter id="glow">
-        <feGaussianBlur stdDeviation="6" result="blur"/>
+        <feGaussianBlur stdDeviation="5" result="blur"/>
         <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-      <filter id="softBlur">
-        <feGaussianBlur stdDeviation="2"/>
       </filter>
       <filter id="woodBlur">
         <feGaussianBlur stdDeviation="0.8"/>
       </filter>
     </defs>
 
-    <!-- ── Sky / Ceiling ── -->
+    <!-- Base fill -->
     <rect width="1440" height="900" fill="#0c0906"/>
     <rect width="1440" height="160" fill="url(#ceilGrad)"/>
+    <ellipse cx="720" cy="0" rx="500" ry="200" fill="url(#chandelierGlow)"/>
 
-    <!-- Ceiling glow from chandelier -->
-    <ellipse cx="720" cy="0" rx="500" ry="220" fill="url(#chandelierGlow)"/>
-
-    <!-- ── Back wall – wood paneling ── -->
+    <!-- Back wall -->
     <rect x="0" y="60" width="1440" height="560" fill="url(#woodWall)"/>
 
-    <!-- Horizontal dado rail -->
+    <!-- Dado rail -->
     <rect x="0" y="300" width="1440" height="14" fill="#5c3a18"/>
-    <rect x="0" y="300" width="1440" height="3"  fill="#c8a84b" opacity="0.4"/>
-    <rect x="0" y="311" width="1440" height="3"  fill="#c8a84b" opacity="0.2"/>
+    <rect x="0" y="300" width="1440" height="3"  fill="#c42727" opacity="0.3"/>
+    <rect x="0" y="311" width="1440" height="3"  fill="#c42727" opacity="0.15"/>
 
-    <!-- Upper wall panels (recessed) -->
+    <!-- Upper wall panels -->
     <rect x="30"   y="80" width="200" height="205" rx="3" fill="#1e1208" opacity="0.6"/>
     <rect x="36"   y="86" width="188" height="193" rx="2" fill="#251609" opacity="0.4"/>
     <rect x="250"  y="80" width="200" height="205" rx="3" fill="#1e1208" opacity="0.6"/>
@@ -426,113 +681,89 @@
 
     <!-- Lower wall panels -->
     <rect x="30"   y="322" width="200" height="150" rx="3" fill="#1e1208" opacity="0.5"/>
-    <rect x="36"   y="328" width="188" height="138" rx="2" fill="#251609" opacity="0.3"/>
     <rect x="250"  y="322" width="200" height="150" rx="3" fill="#1e1208" opacity="0.5"/>
     <rect x="470"  y="322" width="200" height="150" rx="3" fill="#1e1208" opacity="0.5"/>
     <rect x="690"  y="322" width="260" height="150" rx="3" fill="#1e1208" opacity="0.5"/>
     <rect x="970"  y="322" width="200" height="150" rx="3" fill="#1e1208" opacity="0.5"/>
     <rect x="1190" y="322" width="200" height="150" rx="3" fill="#1e1208" opacity="0.5"/>
 
-    <!-- Wood grain lines on walls -->
-    <g opacity="0.12" filter="url(#woodBlur)">
-      <line x1="60"   y1="60"  x2="58"   y2="620" stroke="#d4a060" stroke-width="1"/>
-      <line x1="180"  y1="60"  x2="182"  y2="620" stroke="#d4a060" stroke-width="0.8"/>
-      <line x1="320"  y1="60"  x2="318"  y2="620" stroke="#c89050" stroke-width="1"/>
-      <line x1="450"  y1="60"  x2="452"  y2="620" stroke="#d4a060" stroke-width="0.8"/>
-      <line x1="580"  y1="60"  x2="578"  y2="620" stroke="#d4a060" stroke-width="1"/>
-      <line x1="720"  y1="60"  x2="722"  y2="620" stroke="#c89050" stroke-width="1.2"/>
-      <line x1="860"  y1="60"  x2="858"  y2="620" stroke="#d4a060" stroke-width="0.8"/>
-      <line x1="990"  y1="60"  x2="992"  y2="620" stroke="#d4a060" stroke-width="1"/>
-      <line x1="1120" y1="60"  x2="1118" y2="620" stroke="#c89050" stroke-width="0.8"/>
-      <line x1="1260" y1="60"  x2="1262" y2="620" stroke="#d4a060" stroke-width="1"/>
-      <line x1="1380" y1="60"  x2="1378" y2="620" stroke="#d4a060" stroke-width="0.8"/>
+    <!-- Wood grain -->
+    <g opacity="0.10" filter="url(#woodBlur)">
+      <line x1="60"   y1="60" x2="58"   y2="620" stroke="#d4a060" stroke-width="1"/>
+      <line x1="180"  y1="60" x2="182"  y2="620" stroke="#d4a060" stroke-width="0.8"/>
+      <line x1="320"  y1="60" x2="318"  y2="620" stroke="#c89050" stroke-width="1"/>
+      <line x1="450"  y1="60" x2="452"  y2="620" stroke="#d4a060" stroke-width="0.8"/>
+      <line x1="580"  y1="60" x2="578"  y2="620" stroke="#d4a060" stroke-width="1"/>
+      <line x1="720"  y1="60" x2="722"  y2="620" stroke="#c89050" stroke-width="1.2"/>
+      <line x1="860"  y1="60" x2="858"  y2="620" stroke="#d4a060" stroke-width="0.8"/>
+      <line x1="990"  y1="60" x2="992"  y2="620" stroke="#d4a060" stroke-width="1"/>
+      <line x1="1120" y1="60" x2="1118" y2="620" stroke="#c89050" stroke-width="0.8"/>
+      <line x1="1260" y1="60" x2="1262" y2="620" stroke="#d4a060" stroke-width="1"/>
+      <line x1="1380" y1="60" x2="1378" y2="620" stroke="#d4a060" stroke-width="0.8"/>
     </g>
 
-    <!-- ══ WINDOWS ══ -->
-    <!-- Left window -->
+    <!-- Windows -->
     <rect x="60" y="90" width="170" height="190" rx="4" fill="url(#windowGlass)"/>
     <rect x="60" y="90" width="170" height="190" rx="4" fill="none" stroke="#8a6030" stroke-width="4"/>
-    <!-- Window cross bars -->
-    <line x1="145" y1="90" x2="145" y2="280" stroke="#8a6030" stroke-width="3"/>
+    <line x1="145" y1="90"  x2="145" y2="280" stroke="#8a6030" stroke-width="3"/>
     <line x1="60"  y1="185" x2="230" y2="185" stroke="#8a6030" stroke-width="3"/>
-    <!-- Light shaft from left window -->
-    <polygon points="60,90 230,90 340,500 -60,500" fill="url(#windowLight)" opacity="0.4"/>
+    <polygon points="60,90 230,90 340,500 -60,500" fill="url(#windowLight)" opacity="0.5"/>
 
-    <!-- Right window -->
     <rect x="1210" y="90" width="170" height="190" rx="4" fill="url(#windowGlass)"/>
     <rect x="1210" y="90" width="170" height="190" rx="4" fill="none" stroke="#8a6030" stroke-width="4"/>
     <line x1="1295" y1="90"  x2="1295" y2="280" stroke="#8a6030" stroke-width="3"/>
     <line x1="1210" y1="185" x2="1380" y2="185" stroke="#8a6030" stroke-width="3"/>
-    <!-- Light shaft from right window -->
-    <polygon points="1210,90 1380,90 1500,500 1100,500" fill="url(#windowLight)" opacity="0.4"/>
+    <polygon points="1210,90 1380,90 1500,500 1100,500" fill="url(#windowLight)" opacity="0.5"/>
 
-    <!-- ══ SEAL / EMBLEM on back wall ══ -->
-    <circle cx="720" cy="180" r="52" fill="#1a1006" stroke="#c8a84b" stroke-width="2.5" opacity="0.9"/>
-    <circle cx="720" cy="180" r="44" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.5"/>
-    <!-- Scale of justice symbol -->
-    <line x1="720" y1="148" x2="720" y2="212" stroke="#c8a84b" stroke-width="2" opacity="0.8"/>
-    <line x1="696" y1="162" x2="744" y2="162" stroke="#c8a84b" stroke-width="2" opacity="0.8"/>
-    <circle cx="696" cy="175" r="10" fill="none" stroke="#c8a84b" stroke-width="1.5" opacity="0.7"/>
-    <circle cx="744" cy="175" r="10" fill="none" stroke="#c8a84b" stroke-width="1.5" opacity="0.7"/>
-    <line x1="696" y1="162" x2="696" y2="175" stroke="#c8a84b" stroke-width="1.5" opacity="0.7"/>
-    <line x1="744" y1="162" x2="744" y2="175" stroke="#c8a84b" stroke-width="1.5" opacity="0.7"/>
-    <!-- Crown/top of scale -->
-    <polygon points="720,146 724,152 716,152" fill="#c8a84b" opacity="0.8"/>
+    <!-- Seal — scales of justice (red accent) -->
+    <circle cx="720" cy="178" r="52" fill="#1a0a0a" stroke="#c42727" stroke-width="2.5" opacity="0.9"/>
+    <circle cx="720" cy="178" r="44" fill="none" stroke="#c42727" stroke-width="1" opacity="0.4"/>
+    <line x1="720" y1="146" x2="720" y2="210" stroke="#c42727" stroke-width="2" opacity="0.8"/>
+    <line x1="696" y1="160" x2="744" y2="160" stroke="#c42727" stroke-width="2" opacity="0.8"/>
+    <circle cx="696" cy="173" r="10" fill="none" stroke="#c42727" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="744" cy="173" r="10" fill="none" stroke="#c42727" stroke-width="1.5" opacity="0.7"/>
+    <line x1="696" y1="160" x2="696" y2="173" stroke="#c42727" stroke-width="1.5" opacity="0.7"/>
+    <line x1="744" y1="160" x2="744" y2="173" stroke="#c42727" stroke-width="1.5" opacity="0.7"/>
+    <polygon points="720,144 724,150 716,150" fill="#c42727" opacity="0.8"/>
+    <text x="720" y="203" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" letter-spacing="2" fill="#c42727" opacity="0.65">STATE OF CALIFORNIA</text>
 
-    <!-- Text STATE OF CALIFORNIA -->
-    <text x="720" y="205" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" letter-spacing="2" fill="#c8a84b" opacity="0.7">STATE OF CALIFORNIA</text>
-
-    <!-- ══ COLUMNS ══ -->
-    <!-- Left column -->
+    <!-- Columns -->
     <rect x="270" y="60" width="28" height="560" fill="url(#columnGrad)"/>
     <rect x="260" y="58"  width="48" height="14" fill="#4a3420"/>
     <rect x="260" y="610" width="48" height="12" fill="#4a3420"/>
-    <!-- Column fluting -->
     <line x1="278" y1="72" x2="278" y2="620" stroke="#6a4830" stroke-width="1" opacity="0.5"/>
     <line x1="284" y1="72" x2="284" y2="620" stroke="#6a4830" stroke-width="1" opacity="0.5"/>
-    <line x1="290" y1="72" x2="290" y2="620" stroke="#3a2818" stroke-width="1" opacity="0.5"/>
 
-    <!-- Right column -->
     <rect x="1142" y="60" width="28" height="560" fill="url(#columnGrad)"/>
     <rect x="1132" y="58"  width="48" height="14" fill="#4a3420"/>
     <rect x="1132" y="610" width="48" height="12" fill="#4a3420"/>
     <line x1="1150" y1="72" x2="1150" y2="620" stroke="#6a4830" stroke-width="1" opacity="0.5"/>
     <line x1="1156" y1="72" x2="1156" y2="620" stroke="#6a4830" stroke-width="1" opacity="0.5"/>
-    <line x1="1162" y1="72" x2="1162" y2="620" stroke="#3a2818" stroke-width="1" opacity="0.5"/>
 
-    <!-- Center columns flanking bench -->
     <rect x="520" y="200" width="22" height="420" fill="url(#columnGrad)" opacity="0.85"/>
     <rect x="512" y="198" width="38" height="12" fill="#4a3420"/>
     <rect x="898" y="200" width="22" height="420" fill="url(#columnGrad)" opacity="0.85"/>
     <rect x="890" y="198" width="38" height="12" fill="#4a3420"/>
 
-    <!-- ══ FLAGS ══ -->
-    <!-- US Flag - left -->
+    <!-- US Flag -->
     <rect x="320" y="80" width="4" height="160" fill="#6a4820"/>
     <rect x="324" y="80" width="72" height="50" fill="#b22234"/>
-    <rect x="324" y="87" width="72" height="7"  fill="#ffffff"/>
-    <rect x="324" y="101" width="72" height="7" fill="#ffffff"/>
-    <rect x="324" y="115" width="72" height="7" fill="#ffffff"/>
+    <rect x="324" y="87" width="72" height="7"  fill="#fff"/>
+    <rect x="324" y="101" width="72" height="7" fill="#fff"/>
+    <rect x="324" y="115" width="72" height="7" fill="#fff"/>
     <rect x="324" y="122" width="72" height="7" fill="#b22234"/>
     <rect x="324" y="80"  width="30" height="28" fill="#3c3b6e"/>
-    <!-- Stars hint -->
-    <circle cx="329" cy="85"  r="1.2" fill="white" opacity="0.9"/>
-    <circle cx="336" cy="85"  r="1.2" fill="white" opacity="0.9"/>
-    <circle cx="343" cy="85"  r="1.2" fill="white" opacity="0.9"/>
-    <circle cx="350" cy="85"  r="1.2" fill="white" opacity="0.9"/>
-    <circle cx="329" cy="91"  r="1.2" fill="white" opacity="0.9"/>
-    <circle cx="336" cy="91"  r="1.2" fill="white" opacity="0.9"/>
-    <circle cx="343" cy="91"  r="1.2" fill="white" opacity="0.9"/>
-    <circle cx="329" cy="97"  r="1.2" fill="white" opacity="0.9"/>
-    <circle cx="336" cy="97"  r="1.2" fill="white" opacity="0.9"/>
-    <circle cx="343" cy="97"  r="1.2" fill="white" opacity="0.9"/>
-    <circle cx="350" cy="97"  r="1.2" fill="white" opacity="0.9"/>
+    <circle cx="329" cy="85" r="1.2" fill="white" opacity="0.9"/>
+    <circle cx="336" cy="85" r="1.2" fill="white" opacity="0.9"/>
+    <circle cx="343" cy="85" r="1.2" fill="white" opacity="0.9"/>
+    <circle cx="350" cy="85" r="1.2" fill="white" opacity="0.9"/>
+    <circle cx="329" cy="91" r="1.2" fill="white" opacity="0.9"/>
+    <circle cx="336" cy="91" r="1.2" fill="white" opacity="0.9"/>
+    <circle cx="343" cy="91" r="1.2" fill="white" opacity="0.9"/>
 
-    <!-- CA State Flag - right -->
+    <!-- CA Flag -->
     <rect x="1096" y="80" width="4" height="160" fill="#6a4820"/>
     <rect x="1100" y="80" width="72" height="50" fill="#fff5e6"/>
-    <rect x="1100" y="80" width="72" height="35" fill="#d4e8f0" opacity="0.5"/>
-    <!-- Bear silhouette (simplified) -->
     <ellipse cx="1132" cy="113" rx="14" ry="10" fill="#8B4513" opacity="0.85"/>
     <circle  cx="1143" cy="107" r="6"   fill="#8B4513" opacity="0.85"/>
     <circle  cx="1147" cy="105" r="3"   fill="#8B4513" opacity="0.85"/>
@@ -540,208 +771,180 @@
     <rect x="1127" y="120" width="6" height="10" rx="2" fill="#8B4513" opacity="0.85"/>
     <rect x="1136" y="120" width="6" height="10" rx="2" fill="#8B4513" opacity="0.85"/>
     <rect x="1145" y="120" width="6" height="10" rx="2" fill="#8B4513" opacity="0.85"/>
-    <!-- CALIFORNIA text on flag -->
     <text x="1136" y="127" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#b22234" opacity="0.8">CALIFORNIA</text>
-    <!-- Red stripe at bottom of CA flag -->
     <rect x="1100" y="124" width="72" height="6" fill="#b22234"/>
 
-    <!-- ══ JUDGE'S BENCH ══ -->
-    <!-- Raised platform steps -->
+    <!-- Judge's bench -->
     <rect x="0"   y="580" width="1440" height="20" fill="#2a1a0a"/>
     <rect x="200" y="560" width="1040" height="20" fill="#3a2410"/>
     <rect x="350" y="540" width="740"  height="22" fill="#4a2e14"/>
-
-    <!-- Bench main body -->
     <rect x="380" y="430" width="680" height="115" rx="6" fill="url(#benchGrad)"/>
-    <!-- Bench top surface -->
     <rect x="370" y="426" width="700" height="14" rx="3" fill="#8a5a28"/>
-    <rect x="375" y="428" width="690" height="6"  rx="2" fill="#a06830" opacity="0.6"/>
-    <!-- Bench front panels -->
     <rect x="390" y="445" width="155" height="95" rx="2" fill="#3a2410" opacity="0.5"/>
     <rect x="555" y="445" width="155" height="95" rx="2" fill="#3a2410" opacity="0.5"/>
     <rect x="720" y="445" width="155" height="95" rx="2" fill="#3a2410" opacity="0.5"/>
     <rect x="885" y="445" width="155" height="95" rx="2" fill="#3a2410" opacity="0.5"/>
-    <!-- Bench molding -->
-    <rect x="380" y="540" width="680" height="6" fill="#7a4e22"/>
-    <rect x="380" y="432" width="680" height="4" fill="#c8a84b" opacity="0.3"/>
+    <rect x="380" y="432" width="680" height="4" fill="#c42727" opacity="0.25"/>
 
-    <!-- Judge's chair (high-back) -->
+    <!-- Judge's chair -->
     <rect x="680" y="360" width="80" height="80" rx="4" fill="#2a1a0a"/>
     <rect x="675" y="355" width="90" height="12" rx="3" fill="#3a2410"/>
     <rect x="680" y="400" width="80" height="35" rx="2" fill="#4a2e14"/>
-    <!-- Chair top ornament -->
-    <polygon points="720,348 726,360 714,360" fill="#c8a84b" opacity="0.6"/>
-    <rect x="718" y="344" width="4" height="6" fill="#c8a84b" opacity="0.6"/>
+    <polygon points="720,348 726,360 714,360" fill="#c42727" opacity="0.6"/>
 
-    <!-- ══ COUNSEL TABLES ══ -->
-    <!-- Plaintiff table (left) -->
+    <!-- Counsel tables -->
     <rect x="450" y="510" width="220" height="55" rx="4" fill="#3a2410"/>
     <rect x="450" y="507" width="220" height="8" rx="3" fill="#5a3818"/>
-    <!-- Table legs -->
     <rect x="455" y="562" width="12" height="30" fill="#2a1808"/>
     <rect x="650" y="562" width="12" height="30" fill="#2a1808"/>
-
-    <!-- Defense table (right) -->
     <rect x="770" y="510" width="220" height="55" rx="4" fill="#3a2410"/>
     <rect x="770" y="507" width="220" height="8" rx="3" fill="#5a3818"/>
     <rect x="775" y="562" width="12" height="30" fill="#2a1808"/>
     <rect x="970" y="562" width="12" height="30" fill="#2a1808"/>
 
-    <!-- ══ GALLERY PEWS (foreground) ══ -->
-    <!-- Pew row 1 -->
-    <rect x="0"   y="650" width="440"  height="40" rx="3" fill="url(#pewGrad)"/>
-    <rect x="0"   y="648" width="440"  height="6"  rx="2" fill="#5a3818"/>
+    <!-- Gallery pews -->
+    <rect x="0"    y="650" width="440" height="40" rx="3" fill="url(#pewGrad)"/>
+    <rect x="0"    y="648" width="440" height="6"  rx="2" fill="#5a3818"/>
     <rect x="1000" y="650" width="440" height="40" rx="3" fill="url(#pewGrad)"/>
     <rect x="1000" y="648" width="440" height="6"  rx="2" fill="#5a3818"/>
-
-    <!-- Pew row 2 -->
-    <rect x="0"   y="710" width="440"  height="45" rx="3" fill="url(#pewGrad)" opacity="0.9"/>
-    <rect x="0"   y="708" width="440"  height="6"  rx="2" fill="#5a3818"/>
+    <rect x="0"    y="710" width="440" height="45" rx="3" fill="url(#pewGrad)" opacity="0.9"/>
+    <rect x="0"    y="708" width="440" height="6"  rx="2" fill="#5a3818"/>
     <rect x="1000" y="710" width="440" height="45" rx="3" fill="url(#pewGrad)" opacity="0.9"/>
     <rect x="1000" y="708" width="440" height="6"  rx="2" fill="#5a3818"/>
-
-    <!-- Pew row 3 -->
-    <rect x="0"   y="775" width="440"  height="50" rx="3" fill="url(#pewGrad)" opacity="0.7"/>
-    <rect x="0"   y="773" width="440"  height="6"  rx="2" fill="#5a3818"/>
+    <rect x="0"    y="775" width="440" height="50" rx="3" fill="url(#pewGrad)" opacity="0.7"/>
+    <rect x="0"    y="773" width="440" height="6"  rx="2" fill="#5a3818"/>
     <rect x="1000" y="775" width="440" height="50" rx="3" fill="url(#pewGrad)" opacity="0.7"/>
     <rect x="1000" y="773" width="440" height="6"  rx="2" fill="#5a3818"/>
-
-    <!-- Pew divider rail (center aisle rail) -->
     <rect x="435" y="640" width="12" height="200" fill="#3a2410"/>
     <rect x="993" y="640" width="12" height="200" fill="#3a2410"/>
 
-    <!-- ══ FLOOR ══ -->
+    <!-- Floor -->
     <rect x="0" y="595" width="1440" height="305" fill="url(#woodFloor)"/>
-    <!-- Floor planks -->
-    <g opacity="0.18" filter="url(#woodBlur)">
+    <g opacity="0.15" filter="url(#woodBlur)">
       <line x1="0" y1="620" x2="1440" y2="620" stroke="#d4a060" stroke-width="1"/>
-      <line x1="0" y1="635" x2="1440" y2="635" stroke="#d4a060" stroke-width="0.7"/>
       <line x1="0" y1="650" x2="1440" y2="650" stroke="#d4a060" stroke-width="1"/>
-      <line x1="0" y1="668" x2="1440" y2="668" stroke="#d4a060" stroke-width="0.7"/>
       <line x1="0" y1="685" x2="1440" y2="685" stroke="#d4a060" stroke-width="1"/>
-      <line x1="0" y1="705" x2="1440" y2="705" stroke="#d4a060" stroke-width="1"/>
-      <line x1="0" y1="725" x2="1440" y2="725" stroke="#d4a060" stroke-width="0.7"/>
-      <line x1="0" y1="748" x2="1440" y2="748" stroke="#d4a060" stroke-width="1"/>
-      <line x1="0" y1="770" x2="1440" y2="770" stroke="#d4a060" stroke-width="0.7"/>
-      <line x1="0" y1="795" x2="1440" y2="795" stroke="#d4a060" stroke-width="1"/>
-      <line x1="0" y1="822" x2="1440" y2="822" stroke="#d4a060" stroke-width="0.7"/>
-      <line x1="0" y1="850" x2="1440" y2="850" stroke="#d4a060" stroke-width="1"/>
-    </g>
-    <!-- Vertical floor planks -->
-    <g opacity="0.10" filter="url(#woodBlur)">
-      <line x1="120" y1="595" x2="120" y2="900" stroke="#d4a060" stroke-width="1"/>
-      <line x1="240" y1="595" x2="240" y2="900" stroke="#d4a060" stroke-width="1"/>
-      <line x1="360" y1="595" x2="360" y2="900" stroke="#d4a060" stroke-width="1"/>
-      <line x1="480" y1="595" x2="480" y2="900" stroke="#d4a060" stroke-width="1"/>
-      <line x1="600" y1="595" x2="600" y2="900" stroke="#d4a060" stroke-width="1"/>
-      <line x1="720" y1="595" x2="720" y2="900" stroke="#d4a060" stroke-width="1"/>
-      <line x1="840" y1="595" x2="840" y2="900" stroke="#d4a060" stroke-width="1"/>
-      <line x1="960" y1="595" x2="960" y2="900" stroke="#d4a060" stroke-width="1"/>
-      <line x1="1080" y1="595" x2="1080" y2="900" stroke="#d4a060" stroke-width="1"/>
-      <line x1="1200" y1="595" x2="1200" y2="900" stroke="#d4a060" stroke-width="1"/>
-      <line x1="1320" y1="595" x2="1320" y2="900" stroke="#d4a060" stroke-width="1"/>
+      <line x1="0" y1="725" x2="1440" y2="725" stroke="#d4a060" stroke-width="1"/>
+      <line x1="0" y1="770" x2="1440" y2="770" stroke="#d4a060" stroke-width="1"/>
+      <line x1="0" y1="822" x2="1440" y2="822" stroke="#d4a060" stroke-width="1"/>
     </g>
 
-    <!-- ══ CHANDELIER ══ -->
+    <!-- Chandelier -->
     <line x1="720" y1="0" x2="720" y2="65" stroke="#8a6030" stroke-width="4"/>
-    <ellipse cx="720" cy="68" rx="60" ry="14" fill="none" stroke="#c8a84b" stroke-width="3" opacity="0.8"/>
-    <!-- Chandelier arms -->
-    <line x1="660" y1="68" x2="645" y2="90" stroke="#c8a84b" stroke-width="2" opacity="0.8"/>
-    <line x1="680" y1="68" x2="672" y2="90" stroke="#c8a84b" stroke-width="2" opacity="0.8"/>
-    <line x1="720" y1="82" x2="720" y2="95" stroke="#c8a84b" stroke-width="2" opacity="0.8"/>
-    <line x1="760" y1="68" x2="768" y2="90" stroke="#c8a84b" stroke-width="2" opacity="0.8"/>
-    <line x1="780" y1="68" x2="795" y2="90" stroke="#c8a84b" stroke-width="2" opacity="0.8"/>
-    <!-- Chandelier lights -->
+    <ellipse cx="720" cy="68" rx="60" ry="14" fill="none" stroke="#c42727" stroke-width="2.5" opacity="0.7"/>
+    <line x1="660" y1="68" x2="645" y2="90" stroke="#c42727" stroke-width="1.5" opacity="0.7"/>
+    <line x1="680" y1="68" x2="672" y2="90" stroke="#c42727" stroke-width="1.5" opacity="0.7"/>
+    <line x1="720" y1="82" x2="720" y2="95" stroke="#c42727" stroke-width="1.5" opacity="0.7"/>
+    <line x1="760" y1="68" x2="768" y2="90" stroke="#c42727" stroke-width="1.5" opacity="0.7"/>
+    <line x1="780" y1="68" x2="795" y2="90" stroke="#c42727" stroke-width="1.5" opacity="0.7"/>
     <ellipse cx="645" cy="93" rx="5" ry="8" fill="#fff5cc" opacity="0.9" filter="url(#glow)"/>
     <ellipse cx="672" cy="93" rx="5" ry="8" fill="#fff5cc" opacity="0.9" filter="url(#glow)"/>
     <ellipse cx="720" cy="98" rx="5" ry="8" fill="#fff5cc" opacity="0.9" filter="url(#glow)"/>
     <ellipse cx="768" cy="93" rx="5" ry="8" fill="#fff5cc" opacity="0.9" filter="url(#glow)"/>
     <ellipse cx="795" cy="93" rx="5" ry="8" fill="#fff5cc" opacity="0.9" filter="url(#glow)"/>
-    <!-- Glow halos -->
-    <circle cx="645" cy="93" r="14" fill="#d4a84b" opacity="0.15"/>
-    <circle cx="672" cy="93" r="14" fill="#d4a84b" opacity="0.15"/>
-    <circle cx="720" cy="98" r="16" fill="#d4a84b" opacity="0.18"/>
-    <circle cx="768" cy="93" r="14" fill="#d4a84b" opacity="0.15"/>
-    <circle cx="795" cy="93" r="14" fill="#d4a84b" opacity="0.15"/>
+    <circle cx="645" cy="93" r="16" fill="#c42727" opacity="0.12"/>
+    <circle cx="720" cy="98" r="18" fill="#c42727" opacity="0.14"/>
+    <circle cx="795" cy="93" r="16" fill="#c42727" opacity="0.12"/>
 
-    <!-- ══ WITNESS BOX ══ -->
-    <rect x="542" y="480" width="90" height="65" rx="3" fill="#2e1c0c"/>
-    <rect x="542" y="478" width="90" height="8"  rx="2" fill="#4a2e14"/>
-
-    <!-- ══ Overall bottom-to-top foreground vignette ══ -->
-    <rect x="0" y="0" width="1440" height="900"
-      fill="url(#ceilGrad)" opacity="0" />
     <!-- Side vignettes -->
-    <rect x="0"    y="0" width="120" height="900" fill="url(#woodWall)" opacity="0.45"/>
-    <rect x="1320" y="0" width="120" height="900" fill="url(#woodWall)" opacity="0.45"/>
+    <rect x="0"    y="0" width="110" height="900" fill="url(#woodWall)" opacity="0.5"/>
+    <rect x="1330" y="0" width="110" height="900" fill="url(#woodWall)" opacity="0.5"/>
   </svg>
 
-  <!-- Profile -->
-  <div class="profile">
-    <div class="avatar">MG</div>
-    <div>
-      <div class="profile-name">Mark Gonzales, Esq.</div>
-      <div class="profile-handle">@gonzaleslaw</div>
+  <!-- Language toggle -->
+  <div class="lang-toggle">
+    <button class="lang-btn active">EN</button>
+    <button class="lang-btn" onclick="window.open('https://www.gonzaleslawoffices.com/abogado-accidente-carro/','_blank')">ES</button>
+  </div>
+
+  <!-- Top banner -->
+  <div class="top-banner">
+    🏆 California's #1 Personal Injury Law Firm &nbsp;·&nbsp;
+    <a href="tel:18882322898">FREE Consultation: 1-888-232-2898</a>
+  </div>
+
+  <!-- Header -->
+  <div class="site-header">
+    <div class="logo-badge">MG</div>
+    <div class="firm-name">Gonzales <span>Law</span> Offices</div>
+    <div class="firm-esq">Mark Gonzales, Esq. · CA Bar #249340</div>
+    <div class="firm-tagline">"Your Trusted Advocate In The Fight For Justice"</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stat-strip">
+    <div class="stat-card">
+      <div class="stat-num">$1M<sup>+</sup></div>
+      <div class="stat-label">Recovered for Clients</div>
     </div>
-    <p class="profile-bio">
-      Personal Injury Attorney · California<br/>
-      No Fees Unless We Win · Se Habla Español
-    </p>
+    <div class="stat-card">
+      <div class="stat-num">4.9★</div>
+      <div class="stat-label">202+ Reviews</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">10<sup>+</sup></div>
+      <div class="stat-label">Years Experience</div>
+    </div>
   </div>
 
   <!-- Badges -->
   <div class="badges">
-    <span class="badge">✦ No Fee Unless We Win</span>
-    <span class="badge">⚖ CA Bar #249340</span>
-    <span class="badge">★ 4.9/5 Stars</span>
-    <span class="badge">✦ Se Habla Español</span>
+    <span class="badge red">🏆 No Fee Unless We Win</span>
+    <span class="badge">⚖ Lead Counsel Verified</span>
+    <span class="badge red">📞 Free Consultation</span>
+    <span class="badge">🇲🇽 Se Habla Español</span>
   </div>
 
   <!-- Primary CTA -->
-  <div style="width:100%;max-width:480px;margin-bottom:0;">
+  <div class="cta-wrap">
     <a class="call-bar" href="tel:18882322898">
       <div class="call-icon">📞</div>
       <div>
-        Free Consultation
+        Schedule a Free Consultation
         <span class="call-sub">1-888-232-2898 · Available 24/7</span>
       </div>
+      <span class="call-free">FREE</span>
     </a>
   </div>
 
-  <!-- Links -->
+  <!-- Website & Español -->
+  <div class="section-header">
+    <h2>Our Website</h2>
+    <div class="section-line"></div>
+  </div>
   <div class="links">
-
-    <div class="section-label">Our Website</div>
-
-    <a class="link-btn" href="https://www.gonzaleslawoffices.com/" target="_blank" rel="noopener">
-      <div class="link-icon icon-gold">⚖️</div>
+    <a class="link-btn primary-link" href="https://www.gonzaleslawoffices.com/" target="_blank" rel="noopener">
+      <div class="link-icon icon-red">⚖️</div>
       <div class="link-text">
         <span class="link-title">Gonzales Law Offices</span>
-        <span class="link-sub">gonzaleslawoffices.com — Main website</span>
+        <span class="link-sub">gonzaleslawoffices.com — Full website</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
-
     <a class="link-btn" href="https://www.gonzaleslawoffices.com/abogado-accidente-carro/" target="_blank" rel="noopener">
       <div class="link-icon icon-gold">🇲🇽</div>
       <div class="link-text">
         <span class="link-title">Sitio en Español</span>
-        <span class="link-sub">Abogado de Accidente — Se Habla Español</span>
+        <span class="link-sub">Abogado de Accidentes — Se Habla Español</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
+  </div>
 
-    <div class="section-label">Practice Areas</div>
-
+  <!-- Practice Areas -->
+  <div class="section-header">
+    <h2>Practice Areas</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="links">
     <a class="link-btn" href="https://www.gonzaleslawoffices.com/car-accident-lawyer/" target="_blank" rel="noopener">
-      <div class="link-icon icon-gold">🚗</div>
+      <div class="link-icon icon-red">🚗</div>
       <div class="link-text">
         <span class="link-title">Car Accident Lawyer</span>
-        <span class="link-sub">Auto & vehicle accident claims</span>
+        <span class="link-sub">Auto & vehicle collision claims in California</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
-
     <a class="link-btn" href="https://www.gonzaleslawoffices.com/truck-accident-lawyer/" target="_blank" rel="noopener">
       <div class="link-icon icon-dark">🚛</div>
       <div class="link-text">
@@ -750,25 +953,22 @@
       </div>
       <span class="link-arrow">›</span>
     </a>
-
     <a class="link-btn" href="https://www.gonzaleslawoffices.com/motorcycle-accident-lawyer/" target="_blank" rel="noopener">
       <div class="link-icon icon-dark">🏍️</div>
       <div class="link-text">
         <span class="link-title">Motorcycle Accident Lawyer</span>
-        <span class="link-sub">Motorcycle & bike injury claims</span>
+        <span class="link-sub">Bike & motorcycle injury claims</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
-
     <a class="link-btn" href="https://www.gonzaleslawoffices.com/slip-and-fall-attorney/" target="_blank" rel="noopener">
       <div class="link-icon icon-dark">🏥</div>
       <div class="link-text">
         <span class="link-title">Slip & Fall Attorney</span>
-        <span class="link-sub">Premises liability & injuries</span>
+        <span class="link-sub">Premises liability & negligent property claims</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
-
     <a class="link-btn" href="https://www.gonzaleslawoffices.com/wrongful-death-attorney/" target="_blank" rel="noopener">
       <div class="link-icon icon-dark">🕊️</div>
       <div class="link-text">
@@ -777,47 +977,95 @@
       </div>
       <span class="link-arrow">›</span>
     </a>
+    <a class="link-btn" href="https://www.gonzaleslawoffices.com/rideshare-accident-lawyer/" target="_blank" rel="noopener">
+      <div class="link-icon icon-dark">🚕</div>
+      <div class="link-text">
+        <span class="link-title">Rideshare Accident Lawyer</span>
+        <span class="link-sub">Uber, Lyft & transportation accidents</span>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+    <a class="link-btn" href="https://www.gonzaleslawoffices.com/bus-accident-attorney/" target="_blank" rel="noopener">
+      <div class="link-icon icon-dark">🚌</div>
+      <div class="link-text">
+        <span class="link-title">Bus & Train Accident Attorney</span>
+        <span class="link-sub">Public transit & mass transit injury claims</span>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+  </div>
 
-    <div class="section-label">Reviews & Profiles</div>
+  <div class="divider" style="margin-top:20px;"></div>
 
+  <!-- Testimonials -->
+  <div class="section-header">
+    <h2>Client Reviews</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="testimonials">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"I could not be more happy with the help Mark Gonzales provided. He was there for me every step of the way and made sure I got the best possible outcome for my case."</p>
+      <div class="testimonial-author">— Robert R. <span class="testimonial-type">· Car Accident</span></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Mark helped me recover all my expenses due to my car accident. He was very professional and kept me informed throughout the whole process. Highly recommend!"</p>
+      <div class="testimonial-author">— April F. <span class="testimonial-type">· Personal Injury</span></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Mark did a fantastic job for me when I slipped in a restaurant. He fought hard for my rights and got me a great settlement. He truly cares about his clients."</p>
+      <div class="testimonial-author">— Dottie F. <span class="testimonial-type">· Slip & Fall</span></div>
+    </div>
+  </div>
+
+  <!-- Reviews & Profiles -->
+  <div class="section-header">
+    <h2>Reviews & Profiles</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="links">
     <a class="link-btn" href="https://www.yelp.com/biz/gonzales-law-offices-fontana" target="_blank" rel="noopener">
       <div class="link-icon icon-yelp">⭐</div>
       <div class="link-text">
-        <span class="link-title">Reviews on Yelp</span>
-        <span class="link-sub">4.9 stars · 200+ reviews</span>
+        <span class="link-title">Yelp — 4.9 Stars</span>
+        <span class="link-sub">202+ verified client reviews</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
-
     <a class="link-btn" href="https://www.avvo.com/attorneys/92336-ca-mark-gonzales-4244432.html" target="_blank" rel="noopener">
       <div class="link-icon icon-blue">🏅</div>
       <div class="link-text">
-        <span class="link-title">Avvo Profile</span>
-        <span class="link-sub">Attorney ratings & client reviews</span>
+        <span class="link-title">Avvo Attorney Profile</span>
+        <span class="link-sub">Lead Counsel Verified · Personal Injury 2023</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
-
     <a class="link-btn" href="https://www.linkedin.com/company/gonzales-law-offices-llc" target="_blank" rel="noopener">
       <div class="link-icon icon-li">💼</div>
       <div class="link-text">
         <span class="link-title">LinkedIn</span>
-        <span class="link-sub">Connect with us professionally</span>
+        <span class="link-sub">Professional profile & firm updates</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
+  </div>
 
-    <div class="section-label">Social Media</div>
-
+  <!-- Social Media -->
+  <div class="section-header">
+    <h2>Social Media</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="links">
     <a class="link-btn" href="https://www.facebook.com/gonzaleslawoffices" target="_blank" rel="noopener">
       <div class="link-icon icon-fb">📘</div>
       <div class="link-text">
         <span class="link-title">Facebook</span>
-        <span class="link-sub">News, tips & case updates</span>
+        <span class="link-sub">News, case updates & legal tips</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
-
     <a class="link-btn" href="https://www.instagram.com/gonzaleslawoffices" target="_blank" rel="noopener">
       <div class="link-icon icon-pink">📸</div>
       <div class="link-text">
@@ -826,78 +1074,140 @@
       </div>
       <span class="link-arrow">›</span>
     </a>
-
     <a class="link-btn" href="https://www.tiktok.com/@gonzaleslawoffices" target="_blank" rel="noopener">
       <div class="link-icon icon-dark">🎵</div>
       <div class="link-text">
         <span class="link-title">TikTok</span>
-        <span class="link-sub">Legal tips & know your rights</span>
+        <span class="link-sub">Know your rights — legal tips & reels</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
-
     <a class="link-btn" href="https://www.youtube.com/@gonzaleslawoffices" target="_blank" rel="noopener">
-      <div class="link-icon icon-red">▶️</div>
+      <div class="link-icon" style="background:rgba(255,0,0,0.13);color:#ff6b6b;">▶️</div>
       <div class="link-text">
         <span class="link-title">YouTube</span>
-        <span class="link-sub">Video guides & client stories</span>
+        <span class="link-sub">Video guides, FAQs & client stories</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
+  </div>
 
-    <div class="section-label">Contact</div>
+  <!-- Certifications -->
+  <div class="section-header">
+    <h2>Credentials</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="certs">
+    <div class="cert-row">
+      <div class="cert-icon">🏅</div>
+      <div class="cert-text">
+        <div class="cert-title">Lead Counsel Verified — 2023</div>
+        <div class="cert-sub">Personal Injury · Independently verified by LeadCounsel</div>
+      </div>
+    </div>
+    <div class="cert-row">
+      <div class="cert-icon">⚖️</div>
+      <div class="cert-text">
+        <div class="cert-title">Consumer Attorneys of Los Angeles</div>
+        <div class="cert-sub">Member · CAALA</div>
+      </div>
+    </div>
+    <div class="cert-row">
+      <div class="cert-icon">🏛️</div>
+      <div class="cert-text">
+        <div class="cert-title">Los Angeles County Bar Association</div>
+        <div class="cert-sub">Member · LACBA</div>
+      </div>
+    </div>
+    <div class="cert-row">
+      <div class="cert-icon">📜</div>
+      <div class="cert-text">
+        <div class="cert-title">CA State Bar — License #249340</div>
+        <div class="cert-sub">University of La Verne College of Law · Cal Poly SLO</div>
+      </div>
+    </div>
+  </div>
 
-    <a class="link-btn" href="tel:18882322898">
-      <div class="link-icon icon-green">📞</div>
+  <!-- Office Locations -->
+  <div class="section-header">
+    <h2>Office Locations</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="locations">
+    <div class="location-card">
+      <div class="location-city">Fontana</div>
+      <div class="location-addr">7337 East Ave, Suite E<br/>Fontana, CA 92336</div>
+    </div>
+    <div class="location-card">
+      <div class="location-city">San Bernardino</div>
+      <div class="location-addr">2627 S Waterman Ave, Suite D<br/>San Bernardino, CA 92408</div>
+    </div>
+    <div class="location-card">
+      <div class="location-city">Ontario</div>
+      <div class="location-addr">500 East E Street<br/>Ontario, CA 91764</div>
+    </div>
+    <div class="location-card">
+      <div class="location-city">Rancho Cucamonga</div>
+      <div class="location-addr">12365 Foothill Blvd, Suite 105<br/>Rancho Cucamonga, CA 92336</div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="section-header">
+    <h2>Contact</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="links">
+    <a class="link-btn primary-link" href="tel:18882322898">
+      <div class="link-icon icon-red">📞</div>
       <div class="link-text">
-        <span class="link-title">Call Us Free</span>
-        <span class="link-sub">1-888-232-2898 · 24/7 Available</span>
+        <span class="link-title">Call — 1-888-232-2898</span>
+        <span class="link-sub">24/7 · Free case consultation</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
-
-    <a class="link-btn" href="sms:19094065099">
-      <div class="link-icon icon-green">💬</div>
+    <a class="link-btn" href="tel:19094065099">
+      <div class="link-icon icon-green">📱</div>
       <div class="link-text">
-        <span class="link-title">Text Us</span>
-        <span class="link-sub">(909) 406-5099 · Quick response</span>
+        <span class="link-title">Text — (909) 406-5099</span>
+        <span class="link-sub">Quick response via text message</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
-
     <a class="link-btn" href="https://www.gonzaleslawoffices.com/contact/" target="_blank" rel="noopener">
       <div class="link-icon icon-gold">✉️</div>
       <div class="link-text">
-        <span class="link-title">Free Case Evaluation</span>
-        <span class="link-sub">Submit your case online</span>
+        <span class="link-title">Free Case Evaluation Form</span>
+        <span class="link-sub">Submit your case details online</span>
       </div>
       <span class="link-arrow">›</span>
     </a>
-
   </div>
 
-  <!-- Social strip -->
-  <div class="social-strip">
+  <!-- Social icon strip -->
+  <div class="social-strip" style="margin-top:28px;">
     <a class="social-btn" href="https://www.facebook.com/gonzaleslawoffices" target="_blank" rel="noopener" title="Facebook">
-      <svg width="18" height="18" fill="#1877f2" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+      <svg width="17" height="17" fill="#5b9cf6" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
     </a>
     <a class="social-btn" href="https://www.instagram.com/gonzaleslawoffices" target="_blank" rel="noopener" title="Instagram">
-      <svg width="18" height="18" fill="url(#igGrad)" viewBox="0 0 24 24"><defs><linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f09433"/><stop offset="25%" style="stop-color:#e6683c"/><stop offset="50%" style="stop-color:#dc2743"/><stop offset="75%" style="stop-color:#cc2366"/><stop offset="100%" style="stop-color:#bc1888"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      <svg width="17" height="17" fill="url(#igG2)" viewBox="0 0 24 24"><defs><linearGradient id="igG2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f09433"/><stop offset="50%" style="stop-color:#dc2743"/><stop offset="100%" style="stop-color:#bc1888"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
     </a>
     <a class="social-btn" href="https://www.tiktok.com/@gonzaleslawoffices" target="_blank" rel="noopener" title="TikTok">
-      <svg width="18" height="18" fill="#ffffff" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.73a4.85 4.85 0 01-1.01-.04z"/></svg>
+      <svg width="17" height="17" fill="#fff" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.73a4.85 4.85 0 01-1.01-.04z"/></svg>
     </a>
     <a class="social-btn" href="https://www.youtube.com/@gonzaleslawoffices" target="_blank" rel="noopener" title="YouTube">
-      <svg width="18" height="18" fill="#ff0000" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      <svg width="17" height="17" fill="#ff4444" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
     </a>
     <a class="social-btn" href="https://www.linkedin.com/company/gonzales-law-offices-llc" target="_blank" rel="noopener" title="LinkedIn">
-      <svg width="18" height="18" fill="#0077b5" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <svg width="17" height="17" fill="#5ba3c9" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
     </a>
   </div>
 
   <footer>
-    © 2026 Gonzales Law Offices · Fontana, CA · CA Bar #249340<br/>
-    The information on this site is for general informational purposes only.
+    © 2026 Gonzales Law Offices, P.C. · Fontana, CA · CA Bar #249340<br/>
+    <a href="tel:19095876336">(909) 587-6336</a> · <a href="tel:19094065099">(909) 406-5099</a><br/>
+    The information on this website is for general informational purposes only and does not constitute legal advice.<br/>
+    Attorney advertising. Prior results do not guarantee similar outcomes.
   </footer>
 
 </body>
