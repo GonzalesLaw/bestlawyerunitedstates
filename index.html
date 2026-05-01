@@ -1087,9 +1087,73 @@
       .stat-num { font-size: 17px; }
       .locations { grid-template-columns: 1fr; }
     }
+
+    /* ── Sticky Call Bar ── */
+    #sticky-call {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9000;
+      padding: 0 0 env(safe-area-inset-bottom, 0);
+      background: linear-gradient(135deg, #c42727 0%, #8a1a1a 100%);
+      box-shadow: 0 -4px 24px rgba(196,39,39,0.45);
+    }
+    #sticky-call-btn {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 13px 20px;
+      text-decoration: none;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      width: 100%;
+    }
+    #sticky-pulse {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 0 rgba(255,255,255,0.6);
+      animation: callPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes callPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.6); }
+      70%  { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    }
+    #sticky-call-text { flex: 1; line-height: 1.25; }
+    #sticky-main { display: block; font-size: 14px; font-weight: 700; }
+    #sticky-sub  { display: block; font-size: 10.5px; opacity: 0.8; margin-top: 1px; }
+    #sticky-free {
+      background: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 800;
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+    }
+    /* Push page content above sticky bar */
+    body { padding-bottom: 72px; }
   </style>
 </head>
 <body>
+
+  <!-- ═══ Sticky Call Bar ═══ -->
+  <div id="sticky-call">
+    <a href="tel:+18882322898" id="sticky-call-btn">
+      <span id="sticky-pulse"></span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.18 21 3 13.82 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+      <span id="sticky-call-text">
+        <span id="sticky-main">Call Free 24/7 — 1-888-232-2898</span>
+        <span id="sticky-sub">No fee unless we win · Hablamos Español</span>
+      </span>
+      <span id="sticky-free">FREE</span>
+    </a>
+  </div>
 
   <!-- ═══ Photo Background ═══ -->
   <div id="photo-bg"></div>
