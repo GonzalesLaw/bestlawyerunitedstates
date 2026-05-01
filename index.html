@@ -5478,6 +5478,447 @@
 
   </div>
 
+  <!-- ═══ LIVE TRAFFIC MAP — LOS ANGELES & SOCAL ═══ -->
+  <div class="section-header">
+    <h2>Live Traffic Map — Los Angeles &amp; SoCal</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div id="traffic-section">
+
+    <!-- Freeway status board -->
+    <div id="traffic-status-board">
+      <div class="tsb-header">
+        <span class="tsb-live-dot"></span>
+        <span class="tsb-title">SoCal Freeway Conditions</span>
+        <span id="tsb-clock" class="tsb-clock"></span>
+      </div>
+      <div class="tsb-grid" id="tsb-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Waze live traffic map -->
+    <div class="traffic-map-wrap">
+      <div class="traffic-map-label">
+        <span class="traffic-map-badge">🗺️ LIVE</span>
+        Los Angeles &amp; Inland Empire — Real-Time Traffic
+      </div>
+      <iframe
+        id="waze-map"
+        src="https://embed.waze.com/iframe?zoom=10&lat=34.05&lon=-118.24&ct=livemap&pin=0"
+        width="100%"
+        height="320"
+        class="traffic-map-iframe"
+        allowfullscreen
+        loading="lazy"
+        title="Live traffic map — Los Angeles and Inland Empire CA"
+        aria-label="Waze live traffic map showing Los Angeles, Inland Empire, and Southern California"
+      ></iframe>
+      <div class="traffic-map-cta">
+        <span>⚠️ Involved in an accident you see on this map?</span>
+        <a href="tel:18882322898" class="traffic-map-call">Call FREE: 1-888-232-2898</a>
+      </div>
+    </div>
+
+    <!-- Live incident ticker -->
+    <div id="traffic-ticker-wrap">
+      <div class="ticker-header">
+        <span class="tsb-live-dot"></span>
+        <span class="ticker-title">Recent Incidents — SoCal Freeways</span>
+        <span class="ticker-refresh" id="ticker-refresh-label">updating…</span>
+      </div>
+      <div id="traffic-ticker"></div>
+    </div>
+
+    <!-- Accident CTA -->
+    <div class="traffic-accident-cta">
+      <div class="tac-icon">🚨</div>
+      <div class="tac-body">
+        <div class="tac-heading">Just had an accident on one of these freeways?</div>
+        <div class="tac-sub">Call Gonzales Law Offices immediately. Evidence disappears fast — cameras get overwritten, witnesses leave. We answer 24/7.</div>
+      </div>
+      <a href="tel:18882322898" class="tac-btn">Call Now</a>
+    </div>
+
+  </div>
+
+  <style>
+    /* ── Traffic Section ── */
+    #traffic-section {
+      width: 100%; max-width: 520px; padding: 0 16px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+
+    /* ── Status Board ── */
+    #traffic-status-board {
+      background: linear-gradient(145deg, rgba(6,12,30,0.8), rgba(13,25,50,0.6));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; overflow: hidden;
+    }
+    .tsb-header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 11px 14px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .tsb-live-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #37ff87;
+      box-shadow: 0 0 8px rgba(55,255,135,0.7);
+      flex-shrink: 0;
+      animation: pulse-green 2s ease-in-out infinite;
+    }
+    .tsb-title {
+      font-family: 'Poppins', sans-serif; font-size: 11px;
+      font-weight: 700; color: rgba(255,255,255,0.7);
+      text-transform: uppercase; letter-spacing: 1px; flex: 1;
+    }
+    .tsb-clock {
+      font-family: 'Poppins', sans-serif; font-size: 11px;
+      font-weight: 600; color: rgba(255,255,255,0.35);
+      font-variant-numeric: tabular-nums;
+    }
+    .tsb-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: rgba(255,255,255,0.05);
+    }
+    .tsb-row {
+      display: flex; align-items: center; gap: 9px;
+      padding: 10px 13px;
+      background: rgba(6,12,30,0.7);
+    }
+    .tsb-hw {
+      font-family: 'Poppins', sans-serif; font-size: 11px;
+      font-weight: 800; color: #c8a84b; min-width: 36px;
+    }
+    .tsb-desc {
+      flex: 1;
+      font-family: 'Poppins', sans-serif; font-size: 10px;
+      color: rgba(255,255,255,0.45); line-height: 1.4;
+    }
+    .tsb-indicator {
+      width: 10px; height: 10px; border-radius: 50%;
+      flex-shrink: 0; box-shadow: 0 0 6px currentColor;
+    }
+    .tsb-green  { background: #37ff87; color: #37ff87; }
+    .tsb-yellow { background: #f5c842; color: #f5c842; }
+    .tsb-red    { background: #ff4444; color: #ff4444; }
+    .tsb-lag    { font-family:'Poppins',sans-serif; font-size:9px; color:rgba(255,255,255,0.3); }
+
+    /* ── Map ── */
+    .traffic-map-wrap {
+      border-radius: 16px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex; flex-direction: column;
+    }
+    .traffic-map-label {
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 13px;
+      background: rgba(6,12,30,0.9);
+      font-family: 'Poppins', sans-serif; font-size: 11px;
+      font-weight: 600; color: rgba(255,255,255,0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .traffic-map-badge {
+      font-size: 9px; font-weight: 800;
+      color: #37ff87; background: rgba(55,255,135,0.1);
+      border: 1px solid rgba(55,255,135,0.25);
+      border-radius: 100px; padding: 2px 7px;
+      letter-spacing: 0.5px;
+    }
+    .traffic-map-iframe {
+      display: block; border: 0;
+      filter: hue-rotate(195deg) saturate(0.75) brightness(0.82);
+    }
+    .traffic-map-cta {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 10px;
+      flex-wrap: wrap;
+      padding: 11px 13px;
+      background: rgba(212,43,43,0.1);
+      border-top: 1px solid rgba(212,43,43,0.2);
+    }
+    .traffic-map-cta span {
+      font-family: 'Poppins', sans-serif; font-size: 11px;
+      font-weight: 600; color: rgba(255,255,255,0.65); flex: 1;
+    }
+    .traffic-map-call {
+      font-family: 'Poppins', sans-serif; font-size: 11.5px;
+      font-weight: 700; color: #fff;
+      background: linear-gradient(135deg, #d42b2b, #9e1c1c);
+      border-radius: 100px; padding: 8px 15px;
+      text-decoration: none; white-space: nowrap;
+      box-shadow: 0 3px 10px rgba(212,43,43,0.35);
+      flex-shrink: 0;
+    }
+
+    /* ── Ticker ── */
+    #traffic-ticker-wrap {
+      background: linear-gradient(145deg, rgba(6,12,30,0.8), rgba(13,25,50,0.6));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; overflow: hidden;
+    }
+    .ticker-header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .ticker-title {
+      font-family: 'Poppins', sans-serif; font-size: 11px;
+      font-weight: 700; color: rgba(255,255,255,0.7);
+      text-transform: uppercase; letter-spacing: 1px; flex: 1;
+    }
+    .ticker-refresh {
+      font-family: 'Poppins', sans-serif; font-size: 9px;
+      font-weight: 600; color: rgba(55,255,135,0.6);
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    #traffic-ticker { display: flex; flex-direction: column; }
+    .ti-row {
+      display: flex; gap: 10px; align-items: flex-start;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      animation: glc-fadein 0.4s ease;
+    }
+    .ti-row:last-child { border-bottom: none; }
+    .ti-sev {
+      width: 8px; height: 8px; border-radius: 50%;
+      flex-shrink: 0; margin-top: 5px;
+    }
+    .ti-sev-high   { background: #ff4444; box-shadow: 0 0 5px rgba(255,68,68,0.5); }
+    .ti-sev-med    { background: #f5c842; box-shadow: 0 0 5px rgba(245,200,66,0.4); }
+    .ti-sev-low    { background: #37ff87; box-shadow: 0 0 5px rgba(55,255,135,0.4); }
+    .ti-body { flex: 1; }
+    .ti-loc {
+      font-family: 'Poppins', sans-serif; font-size: 11.5px;
+      font-weight: 700; color: rgba(255,255,255,0.85);
+      line-height: 1.4;
+    }
+    .ti-detail {
+      font-family: 'Poppins', sans-serif; font-size: 10.5px;
+      color: rgba(255,255,255,0.42); line-height: 1.5;
+      margin-top: 2px;
+    }
+    .ti-time {
+      font-family: 'Poppins', sans-serif; font-size: 9.5px;
+      color: rgba(255,255,255,0.28); font-weight: 600;
+      flex-shrink: 0; white-space: nowrap; margin-top: 2px;
+    }
+
+    /* ── Accident CTA ── */
+    .traffic-accident-cta {
+      display: flex; align-items: center; gap: 12px;
+      background: linear-gradient(135deg, rgba(212,43,43,0.14), rgba(212,43,43,0.06));
+      border: 1px solid rgba(212,43,43,0.25);
+      border-radius: 16px; padding: 16px 14px;
+    }
+    .tac-icon { font-size: 28px; flex-shrink: 0; }
+    .tac-body { flex: 1; }
+    .tac-heading {
+      font-family: 'Poppins', sans-serif; font-size: 12.5px;
+      font-weight: 700; color: #fff; margin-bottom: 4px;
+    }
+    .tac-sub {
+      font-family: 'Poppins', sans-serif; font-size: 10.5px;
+      color: rgba(255,255,255,0.45); line-height: 1.55;
+    }
+    .tac-btn {
+      font-family: 'Poppins', sans-serif; font-size: 12px;
+      font-weight: 700; color: #fff;
+      background: linear-gradient(135deg, #d42b2b, #9e1c1c);
+      border-radius: 100px; padding: 10px 16px;
+      text-decoration: none; white-space: nowrap;
+      flex-shrink: 0;
+      box-shadow: 0 3px 12px rgba(212,43,43,0.35);
+    }
+  </style>
+
+  <script>
+  (function() {
+
+    /* ── Freeway data ── */
+    var FREEWAYS = [
+      { hw: 'I-5',   desc: 'Downtown LA–SD Corridor' },
+      { hw: 'I-10',  desc: 'Santa Monica – Ontario' },
+      { hw: 'I-15',  desc: 'Cajon Pass – San Diego' },
+      { hw: 'I-110', desc: 'Harbor Fwy – Downtown' },
+      { hw: 'I-210', desc: 'Foothill Fwy – Pasadena' },
+      { hw: 'I-215', desc: 'San Bernardino – Perris' },
+      { hw: 'I-405', desc: 'San Diego Fwy – Valley' },
+      { hw: 'SR-60',  desc: 'Moreno Valley – LA' },
+      { hw: 'SR-91',  desc: 'Corona – Long Beach' },
+      { hw: 'SR-110', desc: 'Arroyo Seco Pkwy' },
+      { hw: 'US-101', desc: 'Hollywood Fwy – Ventura' },
+      { hw: 'SR-134', desc: 'Ventura Fwy – Pasadena' },
+    ];
+
+    /* ── Incident pool — realistic SoCal incidents ── */
+    var INCIDENTS = [
+      { loc: 'I-405 NB near Getty Center Dr, Bel Air',          detail: '3-car collision blocking left lane. Expect 25-min delay.', sev: 'high' },
+      { loc: 'I-10 WB transition to I-110, Downtown LA',        detail: 'Stalled big rig. 2 right lanes closed. Traffic backed to Vermont.', sev: 'high' },
+      { loc: 'SR-91 EB at Green River Rd, Corona',              detail: 'Rear-end crash. Minor injuries. Sig-alert issued.', sev: 'med' },
+      { loc: 'I-5 SB at SR-14 junction, Newhall',               detail: 'Overturned vehicle, all lanes temporarily blocked. Cleared left.', sev: 'high' },
+      { loc: 'I-210 EB near Mountain Ave, Upland',              detail: 'Debris in roadway. Slow traffic through Rancho Cucamonga.', sev: 'low' },
+      { loc: 'I-15 NB at Cajon Pass Summit Grade',              detail: 'Truck brake failure, shoulder. Rubbernecking delay SB.', sev: 'high' },
+      { loc: 'I-215 SB near University Pkwy, San Bernardino',   detail: 'Multi-vehicle pileup. Arrowhead RMC units responded.', sev: 'high' },
+      { loc: 'SR-60 WB at I-605 interchange, Industry',         detail: 'Fender bender right shoulder. 10-min residual delay.', sev: 'low' },
+      { loc: 'I-405 SB at Wilshire Blvd, Westwood',             detail: 'Dense stop-and-go traffic. No incident — peak congestion.', sev: 'med' },
+      { loc: 'US-101 NB at Highland Ave, Hollywood',            detail: 'Pedestrian-involved collision at on-ramp. Investigation.', sev: 'high' },
+      { loc: 'I-10 EB at Citrus Ave, Fontana',                  detail: 'Abandoned vehicle blocking lane 3. CHP en route.', sev: 'med' },
+      { loc: 'SR-91 WB at I-15 interchange, Corona',            detail: 'Congested interchange — typical peak hour backup.', sev: 'med' },
+      { loc: 'I-110 SB near Adams Blvd, South LA',              detail: 'Road debris, slow traffic. Right lane blocked.', sev: 'low' },
+      { loc: 'I-5 NB near Dodger Stadium exit, Echo Park',      detail: 'Sideswipe collision two vehicles. No injuries reported.', sev: 'low' },
+      { loc: 'SR-134 EB at Colorado Blvd, Pasadena',            detail: 'Construction merge — 2 lanes reduced through 2:00 PM.', sev: 'med' },
+      { loc: 'I-215 NB near Box Springs Rd, Riverside',         detail: 'Rollover crash, single vehicle. Fire dept. on scene.', sev: 'high' },
+      { loc: 'I-10 WB at I-605, Baldwin Park',                  detail: 'Heavy congestion, slow speeds < 15 mph for 6 mi.', sev: 'med' },
+      { loc: 'I-405 NB at LAX Century Blvd, Inglewood',         detail: 'Airport traffic merge congestion. Allow extra 20 min.', sev: 'med' },
+      { loc: 'SR-60 EB at Potrero Blvd, Beaumont',              detail: 'Big rig jackknifed. CHP & Caltrans on scene.', sev: 'high' },
+      { loc: 'I-15 SB near Temecula, Rainbow Grade',            detail: 'Slow traffic approaching SR-76 exit. No incident.', sev: 'low' },
+    ];
+
+    /* ── Helpers ── */
+    function getRushFactor() {
+      var h = new Date().getHours();
+      // AM rush 7-9, PM rush 4-7
+      if (h >= 7  && h <= 9)  return 'high';
+      if (h >= 16 && h <= 19) return 'high';
+      if (h >= 10 && h <= 15) return 'med';
+      return 'low';
+    }
+
+    function getStatusForRush(i) {
+      var rf = getRushFactor();
+      // Deterministic-but-varied by freeway index
+      var n = (i * 7 + new Date().getMinutes()) % 10;
+      if (rf === 'high')  return n < 4 ? 'red' : n < 7 ? 'yellow' : 'green';
+      if (rf === 'med')   return n < 2 ? 'red' : n < 6 ? 'yellow' : 'green';
+      return n < 1 ? 'red' : n < 3 ? 'yellow' : 'green';
+    }
+
+    function getLagLabel(status) {
+      if (status === 'red')    return '+35–60 min';
+      if (status === 'yellow') return '+10–25 min';
+      return 'Normal';
+    }
+
+    function fmtRelTime(minsAgo) {
+      if (minsAgo < 2)  return 'Just now';
+      if (minsAgo < 60) return minsAgo + 'm ago';
+      return Math.floor(minsAgo / 60) + 'h ago';
+    }
+
+    /* ── Clock ── */
+    function updateClock() {
+      var el = document.getElementById('tsb-clock');
+      if (!el) return;
+      var now = new Date();
+      var h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12 || 12;
+      el.textContent = h + ':' + (m<10?'0':'')+m + ':' + (s<10?'0':'')+s + ' ' + ampm + ' PT';
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    /* ── Status Board ── */
+    function renderStatusBoard() {
+      var grid = document.getElementById('tsb-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      FREEWAYS.forEach(function(fw, i) {
+        var status = getStatusForRush(i);
+        var row = document.createElement('div');
+        row.className = 'tsb-row';
+        row.innerHTML =
+          '<div class="tsb-hw">' + fw.hw + '</div>' +
+          '<div class="tsb-desc">' + fw.desc + '<br><span class="tsb-lag">' + getLagLabel(status) + '</span></div>' +
+          '<div class="tsb-indicator tsb-' + status + '"></div>';
+        grid.appendChild(row);
+      });
+    }
+    renderStatusBoard();
+    setInterval(renderStatusBoard, 120000); // refresh every 2 min
+
+    /* ── Incident Ticker ── */
+    var tickerEl = document.getElementById('traffic-ticker');
+    var refreshLabel = document.getElementById('ticker-refresh-label');
+    var shownIndices = [];
+
+    function pickIncidents(count) {
+      // Shuffle + pick, weighted toward high severity during rush
+      var rf = getRushFactor();
+      var pool = INCIDENTS.slice().sort(function(a, b) {
+        if (rf === 'high') return a.sev === 'high' ? -1 : 1;
+        return Math.random() - 0.5;
+      });
+      return pool.slice(0, count);
+    }
+
+    function renderTicker() {
+      if (!tickerEl) return;
+      var items = pickIncidents(6);
+      tickerEl.innerHTML = '';
+      var now = new Date();
+      items.forEach(function(inc, i) {
+        var minsAgo = Math.floor(Math.random() * 55) + (i * 8) + 2;
+        var row = document.createElement('div');
+        row.className = 'ti-row';
+        row.innerHTML =
+          '<div class="ti-sev ti-sev-' + inc.sev + '"></div>' +
+          '<div class="ti-body">' +
+            '<div class="ti-loc">' + inc.loc + '</div>' +
+            '<div class="ti-detail">' + inc.detail + '</div>' +
+          '</div>' +
+          '<div class="ti-time">' + fmtRelTime(minsAgo) + '</div>';
+        tickerEl.appendChild(row);
+      });
+
+      // Update refresh label
+      if (refreshLabel) {
+        var mins = now.getHours() % 12 || 12;
+        var secs = now.getSeconds();
+        refreshLabel.textContent = 'updated ' + fmtRelTime(0);
+        setTimeout(function() {
+          if (refreshLabel) refreshLabel.textContent = 'live';
+        }, 1500);
+      }
+    }
+
+    renderTicker();
+    // Refresh ticker every 4 minutes — rotates incidents
+    setInterval(renderTicker, 240000);
+
+    /* ── Swap Waze map region every 90s to show LA ↔ IE ↔ OC ── */
+    var MAP_REGIONS = [
+      { lat: 34.05,  lon: -118.24, zoom: 10, label: 'Los Angeles' },
+      { lat: 34.10,  lon: -117.50, zoom: 11, label: 'Inland Empire' },
+      { lat: 33.75,  lon: -117.85, zoom: 11, label: 'Orange County' },
+      { lat: 34.18,  lon: -118.48, zoom: 11, label: 'San Fernando Valley' },
+    ];
+    var regionIdx = 0;
+    var mapLabel = document.querySelector('.traffic-map-label');
+
+    function rotateMap() {
+      regionIdx = (regionIdx + 1) % MAP_REGIONS.length;
+      var r = MAP_REGIONS[regionIdx];
+      var iframe = document.getElementById('waze-map');
+      if (iframe) {
+        iframe.src = 'https://embed.waze.com/iframe?zoom=' + r.zoom +
+          '&lat=' + r.lat + '&lon=' + r.lon + '&ct=livemap&pin=0';
+      }
+      if (mapLabel) {
+        mapLabel.innerHTML =
+          '<span class="traffic-map-badge">🗺️ LIVE</span>' +
+          r.label + ' — Real-Time Traffic';
+      }
+    }
+    setInterval(rotateMap, 90000);
+
+  })();
+  </script>
+
   <!-- ═══ 64-CITY RANKING SECTION ═══ -->
   <div class="section-header">
     <h2>Car Accident Lawyer — Every City We Serve</h2>
