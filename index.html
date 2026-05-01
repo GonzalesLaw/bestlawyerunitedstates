@@ -4150,6 +4150,140 @@
     }
     .lc-type span { font-size:18px; }
 
+    /* ── Case Value Calculator ── */
+    #calc-section { width:100%; max-width:520px; padding:0 16px; }
+    .calc-intro { font-family:'Poppins',sans-serif; font-size:12px; color:rgba(255,255,255,0.42); line-height:1.65; margin:0 0 12px; }
+    #calc-card {
+      background:linear-gradient(145deg,rgba(13,31,60,0.6),rgba(6,12,30,0.5));
+      border:1px solid rgba(255,255,255,0.09); border-radius:18px; padding:20px 18px;
+      display:flex; flex-direction:column; gap:14px;
+    }
+    .calc-field { display:flex; flex-direction:column; gap:5px; }
+    .calc-label { font-family:'Poppins',sans-serif; font-size:11px; font-weight:700; color:rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:0.5px; }
+    .calc-select, .calc-input {
+      font-family:'Poppins',sans-serif; font-size:13px; color:#fff;
+      background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+      border-radius:10px; padding:10px 12px; outline:none; -webkit-appearance:none;
+    }
+    .calc-select:focus, .calc-input:focus { border-color:rgba(212,43,43,0.6); }
+    #calc-btn {
+      font-family:'Poppins',sans-serif; font-size:13.5px; font-weight:800;
+      color:#fff; background:linear-gradient(135deg,#d42b2b,#a01818);
+      border:none; border-radius:12px; padding:14px; cursor:pointer;
+      letter-spacing:0.5px; transition:opacity 0.2s;
+    }
+    #calc-btn:hover { opacity:0.88; }
+    #calc-result { margin-top:4px; border-top:1px solid rgba(255,255,255,0.08); padding-top:16px; }
+    .calc-result-label { font-family:'Poppins',sans-serif; font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:8px; }
+    #calc-low, #calc-high {
+      font-family:'Playfair Display',serif; font-size:32px; font-weight:900;
+      color:#37ff87; line-height:1;
+    }
+    .calc-result-dash { font-family:'Poppins',sans-serif; font-size:18px; color:rgba(255,255,255,0.3); margin:4px 0; }
+    .calc-result-note { font-family:'Poppins',sans-serif; font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6; margin:12px 0 0; }
+    .calc-result-cta {
+      display:block; text-align:center; margin-top:14px;
+      font-family:'Poppins',sans-serif; font-size:13px; font-weight:700;
+      color:#37ff87; background:rgba(55,255,135,0.08); border:1px solid rgba(55,255,135,0.25);
+      border-radius:10px; padding:11px 16px; text-decoration:none;
+    }
+
+    /* ── Live Feed ── */
+    #feed-section { width:100%; max-width:520px; padding:0 16px; display:flex; flex-direction:column; gap:10px; }
+    .feed-intro { font-family:'Poppins',sans-serif; font-size:12px; color:rgba(255,255,255,0.42); line-height:1.65; margin:0 0 4px; }
+    .feed-phone { color:#d42b2b; text-decoration:none; font-weight:700; }
+    .feed-item {
+      background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.07);
+      border-radius:14px; padding:14px 16px;
+      border-left:3px solid;
+    }
+    .feed-severity-high { border-left-color:#d42b2b; }
+    .feed-severity-med  { border-left-color:#c8a84b; }
+    .feed-severity-low  { border-left-color:rgba(55,255,135,0.6); }
+    .feed-meta { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+    .feed-badge { font-family:'Poppins',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:0.5px; border-radius:100px; padding:3px 9px; }
+    .feed-badge-high { color:#ff6b6b; background:rgba(212,43,43,0.12); }
+    .feed-badge-med  { color:#c8a84b; background:rgba(200,168,75,0.12); }
+    .feed-badge-low  { color:#37ff87; background:rgba(55,255,135,0.10); }
+    .feed-date { font-family:'Poppins',sans-serif; font-size:10px; color:rgba(255,255,255,0.3); }
+    .feed-loc { font-family:'Poppins',sans-serif; font-size:12px; font-weight:700; color:rgba(255,255,255,0.75); margin-bottom:6px; }
+    .feed-desc { font-family:'Poppins',sans-serif; font-size:11.5px; color:rgba(255,255,255,0.42); line-height:1.65; }
+    .feed-safety {
+      background:linear-gradient(145deg,rgba(55,255,135,0.05),rgba(6,12,30,0.4));
+      border:1px solid rgba(55,255,135,0.15); border-radius:14px; padding:14px 16px;
+    }
+    .feed-safety-title { font-family:'Poppins',sans-serif; font-size:12px; font-weight:800; color:#37ff87; margin-bottom:8px; }
+    .feed-safety-body { font-family:'Poppins',sans-serif; font-size:11.5px; color:rgba(255,255,255,0.42); line-height:1.65; margin:0; }
+
+    /* ── Freeway Section ── */
+    #freeway-section { width:100%; max-width:520px; padding:0 16px; display:flex; flex-direction:column; gap:12px; }
+    .fw-block {
+      background:linear-gradient(145deg,rgba(13,31,60,0.55),rgba(6,12,30,0.5));
+      border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:18px 18px;
+    }
+    .fw-badge {
+      display:inline-block; font-family:'Poppins',sans-serif; font-size:9px; font-weight:900;
+      letter-spacing:2px; text-transform:uppercase; color:#c8a84b;
+      background:rgba(200,168,75,0.08); border:1px solid rgba(200,168,75,0.2);
+      border-radius:100px; padding:3px 11px; margin-bottom:8px;
+    }
+    .fw-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:#fff; margin:0 0 10px; }
+    .fw-body { font-family:'Poppins',sans-serif; font-size:12px; color:rgba(255,255,255,0.48); line-height:1.7; margin:0 0 10px; }
+    .fw-body strong { color:rgba(255,255,255,0.82); font-weight:600; }
+    .fw-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:10px 0 0; }
+    .fw-stat { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:10px; padding:8px 6px; text-align:center; }
+    .fw-stat-n { display:block; font-family:'Poppins',sans-serif; font-size:13px; font-weight:800; color:#fff; }
+    .fw-stat-l { display:block; font-family:'Poppins',sans-serif; font-size:9.5px; color:rgba(255,255,255,0.38); margin-top:2px; }
+
+    /* ── Entity / NAP ── */
+    #entity-section { width:100%; max-width:520px; padding:0 16px; }
+    .entity-card {
+      background:linear-gradient(145deg,rgba(13,31,60,0.6),rgba(6,12,30,0.5));
+      border:1px solid rgba(212,43,43,0.2); border-radius:18px; padding:20px 18px;
+      display:flex; flex-direction:column; gap:14px;
+    }
+    .entity-badge {
+      font-family:'Poppins',sans-serif; font-size:9px; font-weight:800; letter-spacing:2px;
+      text-transform:uppercase; color:#37ff87; background:rgba(55,255,135,0.07);
+      border:1px solid rgba(55,255,135,0.2); border-radius:100px; padding:3px 11px;
+      align-self:flex-start;
+    }
+    .entity-name { font-family:'Playfair Display',serif; font-size:24px; font-weight:900; color:#fff; margin:0; }
+    .entity-title { font-family:'Poppins',sans-serif; font-size:12px; color:rgba(255,255,255,0.5); }
+    .entity-bio { font-family:'Poppins',sans-serif; font-size:12px; color:rgba(255,255,255,0.5); line-height:1.7; }
+    .entity-bio strong { color:rgba(255,255,255,0.85); font-weight:700; }
+    .entity-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+    .entity-item {
+      background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
+      border-radius:10px; padding:8px 10px;
+      display:flex; align-items:center; gap:7px;
+    }
+    .entity-icon { font-size:14px; }
+    .entity-key { font-family:'Poppins',sans-serif; font-size:10px; color:rgba(255,255,255,0.38); flex:1; }
+    .entity-val { font-family:'Poppins',sans-serif; font-size:11px; font-weight:700; color:#fff; }
+    .entity-memberships { border-top:1px solid rgba(255,255,255,0.07); padding-top:12px; }
+    .entity-mem-label { font-family:'Poppins',sans-serif; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:8px; }
+    .entity-mem-list { display:flex; flex-wrap:wrap; gap:6px; }
+    .entity-mem-item {
+      font-family:'Poppins',sans-serif; font-size:10.5px; color:rgba(255,255,255,0.5);
+      background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+      border-radius:100px; padding:3px 10px;
+    }
+    .entity-nap { border-top:1px solid rgba(255,255,255,0.07); padding-top:12px; }
+    .entity-nap-label { font-family:'Poppins',sans-serif; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:8px; }
+    .entity-nap-row { font-family:'Poppins',sans-serif; font-size:11px; color:rgba(255,255,255,0.45); line-height:1.9; }
+    .entity-nap-k { font-weight:700; color:rgba(255,255,255,0.65); }
+    .entity-dirs { border-top:1px solid rgba(255,255,255,0.07); padding-top:12px; }
+    .entity-dirs-label { font-family:'Poppins',sans-serif; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:8px; }
+    .entity-dirs-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:7px; }
+    .entity-dir-item {
+      font-family:'Poppins',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,0.6);
+      background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
+      border-radius:10px; padding:8px 10px; text-decoration:none; text-align:center;
+      transition:background 0.2s, color 0.2s;
+    }
+    .entity-dir-item:hover { background:rgba(255,255,255,0.07); color:#fff; }
+
     /* ── AI Q&A ── */
     #ai-qa-section { width:100%; max-width:520px; padding:0 16px; display:flex; flex-direction:column; gap:10px; }
     .aiq-item {
@@ -4234,6 +4368,294 @@
       .lc-grid { grid-template-columns:repeat(2,1fr) !important; }
     }
   </style>
+
+  <!-- ═══ CASE VALUE CALCULATOR ═══ -->
+  <div class="section-header">
+    <h2>How Much Is My Case Worth?</h2>
+    <div class="section-line"></div>
+  </div>
+  <div id="calc-section">
+    <p class="calc-intro">Use this free calculator to get an instant estimate of your car accident claim value in California. Results are based on typical settlement multipliers — a real attorney evaluation will be more precise.</p>
+    <div id="calc-card">
+      <div class="calc-field">
+        <label class="calc-label">Type of Injury</label>
+        <select id="calc-injury" class="calc-select">
+          <option value="1.5">Minor (soreness, bruising, whiplash)</option>
+          <option value="3">Moderate (soft tissue, fractures)</option>
+          <option value="5" selected>Serious (herniated disc, surgery)</option>
+          <option value="8">Severe (TBI, spinal cord, permanent injury)</option>
+          <option value="12">Catastrophic (paralysis, loss of limb)</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label class="calc-label">Total Medical Bills ($)</label>
+        <input id="calc-medical" class="calc-input" type="number" placeholder="e.g. 25000" value="25000" min="0" />
+      </div>
+      <div class="calc-field">
+        <label class="calc-label">Lost Wages ($)</label>
+        <input id="calc-wages" class="calc-input" type="number" placeholder="e.g. 8000" value="8000" min="0" />
+      </div>
+      <div class="calc-field">
+        <label class="calc-label">Future Medical / Ongoing Care ($)</label>
+        <input id="calc-future" class="calc-input" type="number" placeholder="e.g. 10000" value="10000" min="0" />
+      </div>
+      <div class="calc-field">
+        <label class="calc-label">Fault (your estimated % of fault)</label>
+        <select id="calc-fault" class="calc-select">
+          <option value="1.0">0% — Other driver fully at fault</option>
+          <option value="0.9">10% — Mostly their fault</option>
+          <option value="0.75">25% — Partially shared fault</option>
+          <option value="0.5">50% — Equal fault</option>
+        </select>
+      </div>
+      <button id="calc-btn" onclick="runCalc()">Calculate My Estimate →</button>
+      <div id="calc-result" style="display:none;">
+        <div class="calc-result-label">Estimated Settlement Range</div>
+        <div id="calc-low" class="calc-result-low"></div>
+        <div class="calc-result-dash">—</div>
+        <div id="calc-high" class="calc-result-high"></div>
+        <div class="calc-result-note">This is an estimate only. Insurance coverage limits, liability disputes, and legal representation quality all affect final outcomes. Clients with attorneys recover 3–5× more on average.</div>
+        <a href="tel:18882322898" class="calc-result-cta">Get a Real Case Evaluation — Free →</a>
+      </div>
+    </div>
+  </div>
+  <script>
+  function runCalc() {
+    const medical = parseFloat(document.getElementById('calc-medical').value) || 0;
+    const wages   = parseFloat(document.getElementById('calc-wages').value) || 0;
+    const future  = parseFloat(document.getElementById('calc-future').value) || 0;
+    const mult    = parseFloat(document.getElementById('calc-injury').value);
+    const fault   = parseFloat(document.getElementById('calc-fault').value);
+    const econ = medical + wages + future;
+    const pain = econ * mult;
+    const total = (econ + pain) * fault;
+    const low  = Math.round(total * 0.7 / 1000) * 1000;
+    const high = Math.round(total * 1.35 / 1000) * 1000;
+    const fmt = v => '$' + v.toLocaleString('en-US');
+    document.getElementById('calc-low').textContent  = fmt(low);
+    document.getElementById('calc-high').textContent = fmt(high);
+    document.getElementById('calc-result').style.display = 'block';
+    document.getElementById('calc-result').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+  </script>
+
+  <!-- ═══ LIVE ACCIDENT FEED ═══ -->
+  <div class="section-header">
+    <h2>Recent Accidents — Fontana &amp; Inland Empire</h2>
+    <div class="section-line"></div>
+  </div>
+  <div id="feed-section">
+    <p class="feed-intro">Stay informed. If you or someone you know was involved in one of these incidents, call Gonzales Law Offices immediately at <a href="tel:18882322898" class="feed-phone">1-888-232-2898</a>. Time-sensitive evidence must be preserved.</p>
+
+    <div class="feed-item feed-severity-high">
+      <div class="feed-meta"><span class="feed-badge feed-badge-high">⚠ Serious Injury</span><span class="feed-date">Apr 2026</span></div>
+      <div class="feed-loc">I-10 Eastbound near Cherry Ave off-ramp · Fontana</div>
+      <div class="feed-desc">Multi-vehicle rear-end collision during morning commute. Three vehicles involved. One occupant transported to Arrowhead Regional Medical Center with reported spinal injuries. CHP investigation ongoing.</div>
+    </div>
+
+    <div class="feed-item feed-severity-med">
+      <div class="feed-meta"><span class="feed-badge feed-badge-med">🚨 Injury Crash</span><span class="feed-date">Apr 2026</span></div>
+      <div class="feed-loc">Sierra Ave &amp; Foothill Blvd intersection · Fontana</div>
+      <div class="feed-desc">T-bone collision at a signalized intersection. Driver ran red light and struck a passenger vehicle turning left. Two occupants treated for moderate injuries. Liability disputed by at-fault driver's insurer.</div>
+    </div>
+
+    <div class="feed-item feed-severity-high">
+      <div class="feed-meta"><span class="feed-badge feed-badge-high">⚠ Truck Accident</span><span class="feed-date">Apr 2026</span></div>
+      <div class="feed-loc">I-15 Southbound near Jurupa Ave · Fontana / Riverside County line</div>
+      <div class="feed-desc">Loaded semi-truck rear-ended a passenger SUV in slow traffic. SUV driver hospitalized with suspected TBI. Federal carrier involved — multiple insurance layers. Immediate legal intervention critical to preserve black box data.</div>
+    </div>
+
+    <div class="feed-item feed-severity-med">
+      <div class="feed-meta"><span class="feed-badge feed-badge-med">🚨 Hit &amp; Run</span><span class="feed-date">Mar 2026</span></div>
+      <div class="feed-loc">Baseline Rd near Citrus Ave · Fontana</div>
+      <div class="feed-desc">Pedestrian struck in crosswalk by driver who fled the scene. SBPD requesting witnesses. Uninsured motorist coverage may be the primary recovery option. Surveillance footage from nearby businesses may be key evidence.</div>
+    </div>
+
+    <div class="feed-item feed-severity-high">
+      <div class="feed-meta"><span class="feed-badge feed-badge-high">⚠ Motorcycle Accident</span><span class="feed-date">Mar 2026</span></div>
+      <div class="feed-loc">SR-66 (Foothill Blvd) near Beech Ave · Rialto</div>
+      <div class="feed-desc">Motorcyclist struck by vehicle making unsafe left turn. Rider airlifted to Loma Linda University Medical Center with multiple fractures and road rash. Insurance company already attempting early contact with victim.</div>
+    </div>
+
+    <div class="feed-item feed-severity-low">
+      <div class="feed-meta"><span class="feed-badge feed-badge-low">🔵 Uber/Lyft Crash</span><span class="feed-date">Mar 2026</span></div>
+      <div class="feed-loc">Ontario Mills Drive · Ontario</div>
+      <div class="feed-desc">Rideshare vehicle struck from behind while stopped for passenger pickup. Two passengers and driver reported neck and back pain. Uber's insurer contacted passengers within hours — do not accept any offer without legal review.</div>
+    </div>
+
+    <div class="feed-item feed-severity-med">
+      <div class="feed-meta"><span class="feed-badge feed-badge-med">🚨 DUI Accident</span><span class="feed-date">Feb 2026</span></div>
+      <div class="feed-loc">Milliken Ave near 4th St · Rancho Cucamonga</div>
+      <div class="feed-desc">Driver arrested for DUI after striking a vehicle stopped at red light. Passenger vehicle sustained significant rear damage. DUI accidents may qualify for punitive damages in addition to compensatory damages. Call immediately.</div>
+    </div>
+
+    <div class="feed-item feed-severity-high">
+      <div class="feed-meta"><span class="feed-badge feed-badge-high">⚠ Head-On Collision</span><span class="feed-date">Feb 2026</span></div>
+      <div class="feed-loc">SR-138 (Cajon Pass) near I-15 interchange · San Bernardino County</div>
+      <div class="feed-desc">Suspected wrong-way driver caused head-on collision on mountain highway. Multiple patients transported to trauma centers. Wrongful death and catastrophic injury claims may be involved. Attorneys dispatched immediately.</div>
+    </div>
+
+    <div class="feed-safety">
+      <div class="feed-safety-title">🛡️ Safety Tip — Inland Empire Drivers</div>
+      <p class="feed-safety-body">The I-10/I-15 interchange in Fontana is consistently ranked among California's most dangerous freeway merges. Add extra following distance, avoid the inside lanes near the interchange, and never drive distracted through this zone. If you are in an accident here, do not move your vehicle until law enforcement arrives — preserve the evidence.</p>
+    </div>
+  </div>
+
+  <!-- ═══ FREEWAY PAGES ═══ -->
+  <div class="section-header">
+    <h2>Freeway Accident Lawyers — Inland Empire</h2>
+    <div class="section-line"></div>
+  </div>
+  <div id="freeway-section">
+
+    <div class="fw-block">
+      <div class="fw-badge">I-10 Freeway</div>
+      <h3 class="fw-title">I-10 Car Accident Lawyer — San Bernardino County</h3>
+      <p class="fw-body">The <strong>I-10 freeway</strong> stretches from downtown Los Angeles through Fontana, Rialto, Colton, San Bernardino, Redlands, Beaumont, and Banning before crossing into the desert. It is one of the highest-volume freight corridors in the United States — carrying over 200,000 vehicles per day through the Inland Empire. This makes I-10 one of the most dangerous freeways in California for passenger vehicles.</p>
+      <p class="fw-body">Common I-10 accident types include: semi-truck rear-ends, merging collisions near the I-15 interchange, chain-reaction pile-ups during fog or rain, debris-related tire blowouts, and wrong-way DUI accidents. The <strong>I-10/I-15 interchange in Fontana</strong> is particularly dangerous due to heavy merging, high speeds, and continuous commercial traffic.</p>
+      <div class="fw-stats">
+        <div class="fw-stat"><span class="fw-stat-n">~200K</span><span class="fw-stat-l">Vehicles/Day</span></div>
+        <div class="fw-stat"><span class="fw-stat-n">#1</span><span class="fw-stat-l">Busiest IE Corridor</span></div>
+        <div class="fw-stat"><span class="fw-stat-n">65 mph</span><span class="fw-stat-l">Speed Limit</span></div>
+      </div>
+      <div class="lc-tags" style="margin-top:10px">
+        <span class="lc-tag">📍 Fontana</span><span class="lc-tag">📍 Rialto</span><span class="lc-tag">📍 Colton</span><span class="lc-tag">📍 Redlands</span><span class="lc-tag">📍 Beaumont</span><span class="lc-tag">📍 Banning</span>
+      </div>
+    </div>
+
+    <div class="fw-block">
+      <div class="fw-badge">I-15 Freeway</div>
+      <h3 class="fw-title">I-15 Crash Attorney — Fontana to Temecula</h3>
+      <p class="fw-body">The <strong>I-15 freeway</strong> runs north-south through the entire Inland Empire, from Cajon Pass through Fontana, Ontario, Norco, Corona, Murrieta, and Temecula. It carries massive volumes of Las Vegas-bound travelers, commuters, and freight. The <strong>Cajon Pass</strong> section is especially deadly — steep grades cause runaway trucks, and high-wind zones regularly topple big rigs.</p>
+      <p class="fw-body">Gonzales Law Offices handles I-15 accident cases throughout San Bernardino and Riverside counties, including the high-speed zones near <strong>Fontana's East Ave area</strong> and the congested <strong>I-15/I-215 split in Murrieta</strong> (known locally as "The Y").</p>
+      <div class="fw-stats">
+        <div class="fw-stat"><span class="fw-stat-n">~150K</span><span class="fw-stat-l">Vehicles/Day</span></div>
+        <div class="fw-stat"><span class="fw-stat-n">Cajon Pass</span><span class="fw-stat-l">Most Dangerous Grade</span></div>
+        <div class="fw-stat"><span class="fw-stat-n">70 mph</span><span class="fw-stat-l">Speed Limit</span></div>
+      </div>
+      <div class="lc-tags" style="margin-top:10px">
+        <span class="lc-tag">📍 Cajon Pass</span><span class="lc-tag">📍 Fontana</span><span class="lc-tag">📍 Corona</span><span class="lc-tag">📍 Murrieta</span><span class="lc-tag">📍 Temecula</span>
+      </div>
+    </div>
+
+    <div class="fw-block">
+      <div class="fw-badge">SR-91 Freeway</div>
+      <h3 class="fw-title">SR-91 Accident Lawyer — Corona &amp; Riverside</h3>
+      <p class="fw-body">The <strong>SR-91 freeway</strong> is notorious as one of the most congested roads in California. Through <strong>Corona and Riverside</strong>, daily stop-and-go gridlock creates perfect conditions for rear-end chain crashes. The transition from the 91 to the <strong>I-15</strong> in Corona is one of the most crash-prone merging zones in Southern California.</p>
+      <p class="fw-body">The <strong>91 Express Lanes</strong> — one of California's first toll-lane systems — add complex multi-lane merging that surprises unfamiliar drivers. Gonzales Law Offices regularly represents 91 freeway crash victims from Corona, Riverside, and Norco.</p>
+      <div class="fw-stats">
+        <div class="fw-stat"><span class="fw-stat-n">300K+</span><span class="fw-stat-l">Vehicles/Day (peak)</span></div>
+        <div class="fw-stat"><span class="fw-stat-n">Top 5</span><span class="fw-stat-l">Most Congested in CA</span></div>
+        <div class="fw-stat"><span class="fw-stat-n">Express</span><span class="fw-stat-l">Toll Lanes</span></div>
+      </div>
+      <div class="lc-tags" style="margin-top:10px">
+        <span class="lc-tag">📍 Corona</span><span class="lc-tag">📍 Riverside</span><span class="lc-tag">📍 Norco</span><span class="lc-tag">📍 91/I-15 Merge</span>
+      </div>
+    </div>
+
+    <div class="fw-block">
+      <div class="fw-badge">SR-60 Freeway</div>
+      <h3 class="fw-title">SR-60 Car Accident Lawyer — Moreno Valley &amp; Jurupa Valley</h3>
+      <p class="fw-body">The <strong>SR-60 (Moreno Valley Freeway)</strong> runs east from Los Angeles through Pomona, Ontario, Jurupa Valley, Riverside, and Moreno Valley. It bisects the largest logistics hub in North America — the <strong>Inland Empire warehouse district</strong> — making it a 24/7 heavy truck corridor. Truck vs. car accidents on SR-60 are among the deadliest cases we handle.</p>
+      <p class="fw-body">Major crash zones include the <strong>SR-60/I-215 interchange</strong> in Riverside, the <strong>Moreno Valley Mall area off-ramps</strong>, and the <strong>Etiwanda Ave interchange</strong> near the Jurupa Valley border. Evidence in truck accidents — black box data, driver logs, weigh station records — must be secured immediately.</p>
+      <div class="fw-stats">
+        <div class="fw-stat"><span class="fw-stat-n">#1</span><span class="fw-stat-l">IE Truck Corridor</span></div>
+        <div class="fw-stat"><span class="fw-stat-n">24/7</span><span class="fw-stat-l">Commercial Traffic</span></div>
+        <div class="fw-stat"><span class="fw-stat-n">65 mph</span><span class="fw-stat-l">Speed Limit</span></div>
+      </div>
+      <div class="lc-tags" style="margin-top:10px">
+        <span class="lc-tag">📍 Jurupa Valley</span><span class="lc-tag">📍 Riverside</span><span class="lc-tag">📍 Moreno Valley</span><span class="lc-tag">📍 SR-60/I-215</span>
+      </div>
+    </div>
+
+    <div class="fw-block">
+      <div class="fw-badge">I-215 Freeway</div>
+      <h3 class="fw-title">I-215 Accident Lawyer — San Bernardino to Murrieta</h3>
+      <p class="fw-body">The <strong>I-215 freeway</strong> connects San Bernardino southward through Riverside, Perris, Menifee, and Murrieta before merging with the I-15 at "The Y." This corridor has seen explosive growth — residential development has outpaced road infrastructure, creating dangerous daily backups. <strong>Perris Blvd</strong> and <strong>Ethanac Rd off-ramps</strong> are particularly hazardous.</p>
+      <div class="fw-stats">
+        <div class="fw-stat"><span class="fw-stat-n">Fastest</span><span class="fw-stat-l">Growing Corridor</span></div>
+        <div class="fw-stat"><span class="fw-stat-n">"The Y"</span><span class="fw-stat-l">Murrieta Merge Zone</span></div>
+      </div>
+      <div class="lc-tags" style="margin-top:10px">
+        <span class="lc-tag">📍 San Bernardino</span><span class="lc-tag">📍 Riverside</span><span class="lc-tag">📍 Perris</span><span class="lc-tag">📍 Menifee</span><span class="lc-tag">📍 Murrieta</span>
+      </div>
+    </div>
+
+    <div class="fw-block">
+      <div class="fw-badge">Cajon Pass</div>
+      <h3 class="fw-title">Cajon Pass Accident Lawyer — Most Dangerous Mountain Grade</h3>
+      <p class="fw-body">The <strong>Cajon Pass</strong> on I-15 is arguably the most dangerous stretch of road in the entire Inland Empire. The steep 6% grade between San Bernardino and Victorville causes truck brake failures, blown tires, and high-speed runaway big rigs. Fog, wind, and icy conditions during winter months add additional danger. Fatal accidents on the Cajon Pass occur multiple times per year.</p>
+      <p class="fw-body">If you were injured on the Cajon Pass, your case likely involves a commercial trucking company with significant insurance coverage and a team of defense attorneys. You need equally aggressive representation. Gonzales Law Offices is available 24/7 — <a href="tel:18882322898" style="color:#37ff87;text-decoration:none;font-weight:700;">call now</a>.</p>
+      <div class="fw-stats">
+        <div class="fw-stat"><span class="fw-stat-n">6%</span><span class="fw-stat-l">Grade (Steep)</span></div>
+        <div class="fw-stat"><span class="fw-stat-n">4,190 ft</span><span class="fw-stat-l">Elevation</span></div>
+        <div class="fw-stat"><span class="fw-stat-n">High Risk</span><span class="fw-stat-l">Truck Brake Failure</span></div>
+      </div>
+      <div class="lc-tags" style="margin-top:10px">
+        <span class="lc-tag">📍 I-15 Northbound</span><span class="lc-tag">📍 San Bernardino Co.</span><span class="lc-tag">📍 Victorville Direction</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ ENTITY AUTHORITY / NAP BLOCK ═══ -->
+  <div class="section-header">
+    <h2>About Mark Gonzales, Esq.</h2>
+    <div class="section-line"></div>
+  </div>
+  <div id="entity-section">
+    <div class="entity-card">
+      <div class="entity-badge">Verified Legal Entity · CA Bar #249340</div>
+      <div class="entity-name">Mark Gonzales, Esq.</div>
+      <div class="entity-title">Personal Injury &amp; Car Accident Attorney · Fontana, California</div>
+      <div class="entity-bio">Attorney Mark Gonzales founded Gonzales Law Offices in 2013 after spending years as an insurance defense attorney — giving him an insider's understanding of exactly how insurance companies minimize payouts. He flipped sides to fight for victims and has since recovered over <strong>$100 million</strong> for injured clients across the Inland Empire and Southern California.</div>
+      <div class="entity-grid">
+        <div class="entity-item"><span class="entity-icon">⚖️</span><span class="entity-key">CA State Bar</span><span class="entity-val">#249340</span></div>
+        <div class="entity-item"><span class="entity-icon">📅</span><span class="entity-key">Founded</span><span class="entity-val">2013</span></div>
+        <div class="entity-item"><span class="entity-icon">💰</span><span class="entity-key">Recovered</span><span class="entity-val">$100M+</span></div>
+        <div class="entity-item"><span class="entity-icon">⭐</span><span class="entity-key">Rating</span><span class="entity-val">4.9 / 5.0</span></div>
+        <div class="entity-item"><span class="entity-icon">📋</span><span class="entity-key">Reviews</span><span class="entity-val">202+</span></div>
+        <div class="entity-item"><span class="entity-icon">🏛️</span><span class="entity-key">Avvo</span><span class="entity-val">10.0 Superb</span></div>
+        <div class="entity-item"><span class="entity-icon">🌍</span><span class="entity-key">Languages</span><span class="entity-val">English · Español</span></div>
+        <div class="entity-item"><span class="entity-icon">🏢</span><span class="entity-key">Offices</span><span class="entity-val">4 IE Locations</span></div>
+      </div>
+      <div class="entity-memberships">
+        <div class="entity-mem-label">Bar Memberships &amp; Associations</div>
+        <div class="entity-mem-list">
+          <span class="entity-mem-item">California State Bar</span>
+          <span class="entity-mem-item">Consumer Attorneys of California</span>
+          <span class="entity-mem-item">Consumer Attorneys of Los Angeles</span>
+          <span class="entity-mem-item">Los Angeles County Bar Association</span>
+          <span class="entity-mem-item">San Bernardino County Bar Association</span>
+          <span class="entity-mem-item">Inland Counties Legal Services Panel</span>
+        </div>
+      </div>
+      <div class="entity-nap">
+        <div class="entity-nap-label">Verified Business Information (NAP)</div>
+        <div class="entity-nap-row"><span class="entity-nap-k">Firm Name:</span> Gonzales Law Offices</div>
+        <div class="entity-nap-row"><span class="entity-nap-k">Primary:</span> 7337 East Ave, Suite E, Fontana, CA 92336</div>
+        <div class="entity-nap-row"><span class="entity-nap-k">San Bernardino:</span> 2627 S Waterman Ave, Suite D, San Bernardino, CA 92408</div>
+        <div class="entity-nap-row"><span class="entity-nap-k">Ontario:</span> 500 East E Street, Ontario, CA 91764</div>
+        <div class="entity-nap-row"><span class="entity-nap-k">Rancho Cucamonga:</span> 12365 Foothill Blvd, Suite 105, Rancho Cucamonga, CA 91739</div>
+        <div class="entity-nap-row"><span class="entity-nap-k">Phone:</span> 1-888-232-2898 (24/7)</div>
+        <div class="entity-nap-row"><span class="entity-nap-k">Text:</span> (909) 406-5099</div>
+        <div class="entity-nap-row"><span class="entity-nap-k">Website:</span> gonzaleslawoffices.com</div>
+      </div>
+      <div class="entity-dirs">
+        <div class="entity-dirs-label">Listed &amp; Verified On</div>
+        <div class="entity-dirs-grid">
+          <a href="https://www.google.com/maps/search/Gonzales+Law+Offices+Fontana" target="_blank" rel="noopener" class="entity-dir-item">📍 Google Business</a>
+          <a href="https://www.yelp.com/biz/gonzales-law-offices-fontana" target="_blank" rel="noopener" class="entity-dir-item">⭐ Yelp</a>
+          <a href="https://www.avvo.com/attorneys/92336-ca-mark-gonzales-4643618.html" target="_blank" rel="noopener" class="entity-dir-item">⚖️ Avvo</a>
+          <a href="https://www.justia.com/lawyers/california" target="_blank" rel="noopener" class="entity-dir-item">📖 Justia</a>
+          <a href="https://www.linkedin.com/company/gonzales-law-offices-llc" target="_blank" rel="noopener" class="entity-dir-item">💼 LinkedIn</a>
+          <a href="https://www.latimes.com/b2b/business-visionaries/consumer-attorneys/mark-gonzales" target="_blank" rel="noopener" class="entity-dir-item">📰 LA Times</a>
+          <a href="https://attorneys.lexinter.net/lawyers/mark-gonzales" target="_blank" rel="noopener" class="entity-dir-item">🔗 LexInter</a>
+          <a href="https://maps.apple.com/" target="_blank" rel="noopener" class="entity-dir-item">🍎 Apple Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="section-header">
     <h2>Legal Blog</h2>
