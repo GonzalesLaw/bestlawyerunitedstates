@@ -4103,6 +4103,349 @@
   </script>
 
 <!-- ═══════════════════════════════════════════════════════
+     MOBILE OPTIMIZATION LAYER
+     Target: 375px–430px (iPhone SE → iPhone 15 Pro Max)
+     ═══════════════════════════════════════════════════════ -->
+<style>
+  /* ── Base: ensure no horizontal scroll ── */
+  html, body {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  * { box-sizing: border-box; }
+
+  /* ── Touch targets: min 44px tap area ── */
+  .link-btn, .call-bar, .social-btn, .area-tag, .award-pill {
+    min-height: 48px !important;
+  }
+  .link-btn {
+    padding: 14px 16px !important;
+  }
+
+  /* ── Improve text readability on small screens ── */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  @media (max-width: 480px) {
+    /* HEADER */
+    .site-header {
+      padding: 24px 14px 18px !important;
+      gap: 5px !important;
+    }
+    .logo-badge {
+      width: 96px !important;
+      height: 96px !important;
+    }
+    .firm-name {
+      font-size: 26px !important;
+      letter-spacing: -0.5px !important;
+    }
+    .firm-esq {
+      font-size: 12px !important;
+    }
+    .firm-tagline {
+      font-size: 12px !important;
+      padding: 0 8px !important;
+    }
+
+    /* AWARD PILLS — wrap tightly */
+    .award-row {
+      gap: 5px !important;
+      padding: 8px 12px !important;
+      flex-wrap: wrap !important;
+    }
+    .award-pill {
+      font-size: 10.5px !important;
+      padding: 5px 9px !important;
+      min-height: 28px !important;
+    }
+
+    /* STAT STRIP — 3 columns stay but tighter */
+    .stat-strip {
+      gap: 6px !important;
+      padding: 0 12px !important;
+    }
+    .stat-card {
+      padding: 12px 6px !important;
+      border-radius: 12px !important;
+    }
+    .stat-num {
+      font-size: 17px !important;
+    }
+    .stat-label {
+      font-size: 9px !important;
+    }
+
+    /* PRIMARY CTA */
+    .cta-wrap {
+      padding: 0 12px 6px !important;
+    }
+    .call-bar {
+      padding: 14px 14px !important;
+      gap: 10px !important;
+      border-radius: 14px !important;
+    }
+    .call-icon {
+      width: 36px !important;
+      height: 36px !important;
+      font-size: 17px !important;
+      border-radius: 9px !important;
+    }
+    .call-bar > span:not(.call-icon):not(.call-free) {
+      font-size: 15px !important;
+    }
+    .call-sub { font-size: 11px !important; }
+    .call-free {
+      font-size: 10px !important;
+      padding: 3px 8px !important;
+    }
+
+    /* SECTION HEADERS */
+    .section-header {
+      padding: 20px 12px 10px !important;
+    }
+
+    /* LINK BUTTONS */
+    .links {
+      padding: 0 12px !important;
+      gap: 7px !important;
+    }
+    .link-btn {
+      padding: 13px 14px !important;
+      gap: 11px !important;
+      border-radius: 13px !important;
+    }
+    .link-icon {
+      width: 36px !important;
+      height: 36px !important;
+      font-size: 16px !important;
+      border-radius: 9px !important;
+    }
+    .link-title {
+      font-size: 13.5px !important;
+    }
+    .link-sub {
+      font-size: 11px !important;
+    }
+    .link-arrow {
+      font-size: 16px !important;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 0 12px !important;
+    }
+    .testimonial-card {
+      padding: 14px 15px !important;
+      border-radius: 13px !important;
+    }
+    .testimonial-text {
+      font-size: 12.5px !important;
+      line-height: 1.6 !important;
+    }
+    .testimonial-author {
+      font-size: 11px !important;
+    }
+
+    /* WHY CARDS */
+    .why-cards {
+      padding: 0 12px !important;
+      gap: 7px !important;
+    }
+    .why-card {
+      padding: 13px 14px !important;
+      border-radius: 13px !important;
+    }
+    .why-icon { font-size: 20px !important; }
+    .why-title { font-size: 13px !important; }
+    .why-sub { font-size: 11.5px !important; }
+
+    /* CERTS */
+    .certs {
+      padding: 0 12px !important;
+      gap: 7px !important;
+    }
+    .cert-row {
+      padding: 13px 14px !important;
+      border-radius: 13px !important;
+    }
+    .cert-icon { font-size: 20px !important; width: 28px !important; }
+    .cert-name { font-size: 13px !important; }
+    .cert-sub  { font-size: 11px !important; }
+
+    /* LOCATION CARDS */
+    .locations {
+      padding: 0 12px !important;
+      gap: 7px !important;
+    }
+    .location-card {
+      padding: 13px 14px !important;
+      border-radius: 13px !important;
+    }
+    .loc-name  { font-size: 13.5px !important; }
+    .loc-miles { font-size: 11px !important; }
+
+    /* SOCIAL ROW */
+    .social-row {
+      gap: 8px !important;
+      padding: 0 12px !important;
+    }
+    .social-btn {
+      width: 44px !important;
+      height: 44px !important;
+      font-size: 18px !important;
+      border-radius: 12px !important;
+    }
+
+    /* AREA TAGS */
+    .areas {
+      padding: 0 12px !important;
+      gap: 5px !important;
+    }
+    .area-tag {
+      font-size: 11px !important;
+      padding: 5px 10px !important;
+      min-height: 28px !important;
+    }
+
+    /* BADGES ROW */
+    .badges {
+      padding: 0 12px !important;
+      gap: 5px !important;
+    }
+    .badge {
+      font-size: 10px !important;
+      padding: 4px 10px !important;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 20px 12px 12px !important;
+    }
+    .footer-links {
+      gap: 8px !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+    }
+    .footer-link {
+      font-size: 11px !important;
+    }
+    .footer-legal {
+      font-size: 10px !important;
+      line-height: 1.6 !important;
+    }
+
+    /* TOP BANNER */
+    .top-banner {
+      font-size: 11.5px !important;
+      padding: 9px 12px !important;
+      line-height: 1.4 !important;
+    }
+
+    /* TICKER */
+    #ticker-wrap {
+      font-size: 11px !important;
+    }
+
+    /* SOCIAL PROOF POPUP */
+    #sp-popup {
+      left: 10px !important;
+      right: 10px !important;
+      bottom: 84px !important;
+      padding: 11px 13px !important;
+      border-radius: 13px !important;
+      font-size: 12px !important;
+      max-width: none !important;
+      width: auto !important;
+    }
+    .sp-name { font-size: 13px !important; }
+    .sp-msg  { font-size: 12px !important; }
+    .sp-time { font-size: 10.5px !important; }
+
+    /* NO WIN NO FEE BANNER */
+    #nwnf-banner {
+      padding: 14px 14px !important;
+      border-radius: 14px !important;
+      margin: 0 12px !important;
+    }
+
+    /* RESULTS GRID */
+    #results-grid {
+      padding: 0 12px !important;
+      gap: 7px !important;
+    }
+    .result-card {
+      padding: 13px 14px !important;
+      border-radius: 13px !important;
+    }
+    .result-amount { font-size: 16px !important; }
+    .result-type   { font-size: 11.5px !important; }
+
+    /* STEPS */
+    #steps-wrap {
+      padding: 0 12px !important;
+    }
+    .step-item {
+      padding: 13px 14px !important;
+      border-radius: 13px !important;
+    }
+    .step-num  { font-size: 20px !important; }
+    .step-title { font-size: 13px !important; }
+    .step-desc  { font-size: 12px !important; }
+
+    /* LOCAL STATS */
+    #local-stats-box {
+      margin: 0 12px !important;
+      padding: 14px 14px !important;
+      border-radius: 14px !important;
+    }
+    .local-stat-val { font-size: 18px !important; }
+    .local-stat-label { font-size: 11px !important; }
+
+    /* BADGE WALL */
+    #badge-wall {
+      padding: 0 12px !important;
+      gap: 7px !important;
+    }
+    .badge-item {
+      padding: 11px 12px !important;
+      border-radius: 12px !important;
+    }
+    .badge-score { font-size: 16px !important; }
+    .badge-name  { font-size: 11px !important; }
+
+    /* FAQ */
+    .faq-list {
+      padding: 0 12px !important;
+    }
+    .faq-q { font-size: 13px !important; padding: 14px 14px !important; }
+    .faq-a { font-size: 12px !important; padding: 0 14px 14px !important; }
+
+    /* MAPS */
+    .maps-wrapper {
+      padding: 0 12px !important;
+    }
+    .maps-wrapper iframe {
+      border-radius: 13px !important;
+    }
+  }
+
+  /* ── Very small phones (iPhone SE = 375px) ── */
+  @media (max-width: 390px) {
+    .firm-name { font-size: 23px !important; }
+    .stat-num  { font-size: 15px !important; }
+    .award-pill { font-size: 9.5px !important; padding: 4px 7px !important; }
+    .result-amount { font-size: 14px !important; }
+    .call-bar > span:not(.call-icon):not(.call-free) { font-size: 14px !important; }
+    .badge-item { flex: 1 1 calc(50% - 7px) !important; }
+    /* Hide call-free label on tiniest screens */
+    .call-free { display: none !important; }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════
      AWARD-WINNING DESIGN LAYER
      Inspired by Morgan & Morgan, The Barnes Firm, Crockett Law
      ═══════════════════════════════════════════════════════ -->
