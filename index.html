@@ -5335,5 +5335,617 @@
 })();
 </script>
 
+<!-- ═══════════════════════════════════════════════════════
+     DK LAW — INSPIRED UPGRADE LAYER
+     Key patterns: neon accent on key phrase, before/after
+     case cards, "As Seen In" media bar, Benefits section,
+     5-star Google count, popup CTA, award badge wall
+     ═══════════════════════════════════════════════════════ -->
+<style>
+  /* ── NEON GREEN accent (DK Law's signature electric green) ── */
+  :root {
+    --neon: #37ff87;
+    --neon-dim: rgba(55,255,135,0.18);
+    --neon-glow: rgba(55,255,135,0.35);
+  }
+
+  /* ── Hero headline "all the way" style — key phrase in neon ── */
+  #banderas-hero h1 .neon-phrase {
+    font-style: italic;
+    background: linear-gradient(135deg, #37ff87 0%, #00c96e 80%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    filter: drop-shadow(0 0 18px rgba(55,255,135,0.5));
+  }
+
+  /* ── GOOGLE REVIEW STRIP (DK's "5237+ 5 Star Client Reviews") ── */
+  #google-review-strip {
+    width: 100%;
+    max-width: 520px;
+    padding: 0 16px;
+    margin-bottom: 4px;
+  }
+  #google-review-strip a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 100px;
+    padding: 10px 18px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+  }
+  #google-review-strip a:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.18);
+  }
+  .grs-stars { font-size: 15px; letter-spacing: 2px; color: #fbbc04; }
+  .grs-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.75);
+  }
+  .grs-text strong { color: #fff; }
+  .grs-logo {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.4);
+    font-family: 'Poppins', sans-serif;
+    border-left: 1px solid rgba(255,255,255,0.12);
+    padding-left: 10px;
+  }
+
+  /* ── AS SEEN IN media bar (DK Law's Forbes, LA Times, etc.) ── */
+  #media-bar {
+    width: 100%;
+    max-width: 520px;
+    padding: 0 16px;
+    margin: 8px 0;
+  }
+  #media-bar-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.28);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  #media-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .media-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.22);
+    padding: 5px 10px;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  .media-logo:hover { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.15); }
+
+  /* ── BEFORE/AFTER CASE RESULT CARDS (DK Law's signature) ── */
+  #dk-results {
+    width: 100%;
+    max-width: 520px;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .dk-result-card {
+    background: linear-gradient(145deg, rgba(13,31,60,0.65), rgba(6,12,30,0.55));
+    border: 1px solid rgba(200,168,75,0.18);
+    border-radius: 16px;
+    padding: 16px 18px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+  .dk-result-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon), #00c96e, var(--neon));
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .dk-result-card:hover::before { opacity: 1; }
+  .dk-result-card:hover {
+    border-color: rgba(55,255,135,0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(55,255,135,0.08);
+  }
+  .dkr-type {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 8px;
+  }
+  .dkr-amounts {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .dkr-before {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .dkr-before-label {
+    font-size: 9px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .dkr-before-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.35);
+    text-decoration: line-through;
+    text-decoration-color: rgba(255,80,80,0.5);
+  }
+  .dkr-arrow {
+    font-size: 18px;
+    color: var(--neon);
+    filter: drop-shadow(0 0 6px var(--neon-glow));
+    flex-shrink: 0;
+  }
+  .dkr-after {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+  }
+  .dkr-after-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--neon);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .dkr-after-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #37ff87, #00c96e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(55,255,135,0.3));
+  }
+  .dkr-location {
+    font-size: 11px;
+    color: rgba(255,255,255,0.32);
+    font-family: 'Poppins', sans-serif;
+    margin-top: 8px;
+  }
+  @media (max-width: 480px) {
+    .dkr-after-val { font-size: 18px !important; }
+    .dkr-before-val { font-size: 13px !important; }
+    .dk-result-card { padding: 13px 14px !important; }
+  }
+
+  /* ── BENEFITS BEYOND section (DK Law's "Benefits Beyond Compensation") ── */
+  #dk-benefits {
+    width: 100%;
+    max-width: 520px;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .dkb-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 16px 14px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .dkb-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .dkb-card:hover { border-color: rgba(55,255,135,0.2); }
+  .dkb-card:hover::after { opacity: 1; }
+  .dkb-icon {
+    font-size: 26px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .dkb-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+  .dkb-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.55;
+  }
+  @media (max-width: 390px) {
+    #dk-benefits { grid-template-columns: 1fr !important; }
+  }
+
+  /* ── AWARD BADGE WALL (DK Law style — horizontal scroll) ── */
+  #dk-awards {
+    width: 100%;
+    max-width: 520px;
+    padding: 0 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  #dk-awards::-webkit-scrollbar { display: none; }
+  #dk-awards-inner {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 4px;
+    width: max-content;
+  }
+  .dka-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 14px;
+    padding: 14px 12px;
+    width: 90px;
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+    text-align: center;
+  }
+  .dka-badge:hover {
+    border-color: rgba(200,168,75,0.3);
+    background: rgba(200,168,75,0.06);
+    transform: translateY(-2px);
+  }
+  .dka-icon { font-size: 22px; }
+  .dka-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+  }
+
+  /* ── POPUP CONTACT FORM (DK Law's 15s delay popup) ── */
+  #dk-popup {
+    position: fixed;
+    bottom: 80px;
+    right: 16px;
+    width: min(320px, calc(100vw - 32px));
+    background: linear-gradient(145deg, #0d1828, #0a1020);
+    border: 1px solid rgba(55,255,135,0.25);
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 8999;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(55,255,135,0.08);
+    transform: translateY(20px) scale(0.96);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  #dk-popup.dk-show {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: all;
+  }
+  #dk-popup-close {
+    position: absolute;
+    top: 12px; right: 14px;
+    background: none; border: none;
+    color: rgba(255,255,255,0.4);
+    font-size: 18px; cursor: pointer;
+    line-height: 1; padding: 4px;
+    transition: color 0.2s;
+  }
+  #dk-popup-close:hover { color: #fff; }
+  #dk-popup-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  #dk-popup-icon {
+    width: 40px; height: 40px;
+    background: var(--neon-dim);
+    border: 1px solid rgba(55,255,135,0.3);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  #dk-popup h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    margin: 0;
+  }
+  #dk-popup p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.55;
+    margin: 0 0 14px;
+  }
+  .dk-popup-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 8px;
+  }
+  .dk-popup-btn.primary {
+    background: linear-gradient(135deg, #37ff87, #00c96e);
+    color: #07080f;
+    box-shadow: 0 6px 20px rgba(55,255,135,0.3);
+  }
+  .dk-popup-btn.primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+  .dk-popup-btn.secondary {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
+  }
+  .dk-popup-btn.secondary:hover { background: rgba(255,255,255,0.10); }
+  #dk-popup-dismiss {
+    display: block;
+    text-align: center;
+    font-size: 10px;
+    color: rgba(255,255,255,0.25);
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: color 0.2s;
+  }
+  #dk-popup-dismiss:hover { color: rgba(255,255,255,0.5); }
+
+  /* ── NEON CTA bar variant ── */
+  .call-bar.neon-cta {
+    background: linear-gradient(135deg, #00a854, #006e38) !important;
+    box-shadow: 0 8px 28px rgba(55,255,135,0.22) !important;
+    border: 1px solid rgba(55,255,135,0.2) !important;
+  }
+</style>
+
+<!-- DK Law JS injections -->
+<script>
+(function() {
+  // ── 1. Replace hero h1 "You Win." with DK-style neon phrase ──
+  const h1 = document.querySelector('#banderas-hero h1');
+  if (h1) {
+    h1.innerHTML = 'We Fight<br>Until You <em class="neon-phrase">Win.</em>';
+  }
+
+  // ── 2. Google Review Strip (inject below award pills) ──
+  const header = document.querySelector('.site-header');
+  if (header) {
+    const grs = document.createElement('div');
+    grs.id = 'google-review-strip';
+    grs.innerHTML = `
+      <a href="https://www.google.com/search?q=Gonzales+Law+Offices+Fontana" target="_blank" rel="noopener">
+        <span class="grs-stars">★★★★★</span>
+        <span class="grs-text"><strong>4.9 / 5.0</strong> · 202+ Client Reviews</span>
+        <span class="grs-logo">Google</span>
+      </a>
+    `;
+    header.insertAdjacentElement('afterend', grs);
+  }
+
+  // ── 3. "As Seen In" Media Bar (after review strip) ──
+  const grs = document.getElementById('google-review-strip');
+  if (grs) {
+    const mb = document.createElement('div');
+    mb.id = 'media-bar';
+    mb.innerHTML = `
+      <div id="media-bar-label">Trusted &amp; Featured In</div>
+      <div id="media-logos">
+        <span class="media-logo">ABC7</span>
+        <span class="media-logo">Telemundo</span>
+        <span class="media-logo">Univision</span>
+        <span class="media-logo">IE Weekly</span>
+        <span class="media-logo">Daily Bulletin</span>
+        <span class="media-logo">KTLA 5</span>
+      </div>
+    `;
+    grs.insertAdjacentElement('afterend', mb);
+  }
+
+  // ── 4. Before/After Case Result Cards section ──
+  const resultsSection = document.querySelector('#results-grid');
+  if (resultsSection) {
+    const sh = resultsSection.previousElementSibling;
+    const dkResults = document.createElement('div');
+    dkResults.id = 'dk-results';
+    dkResults.innerHTML = `
+      <div class="dk-result-card">
+        <div class="dkr-type">Semi-Truck Collision · Fontana, CA</div>
+        <div class="dkr-amounts">
+          <div class="dkr-before">
+            <span class="dkr-before-label">Insurer Offered</span>
+            <span class="dkr-before-val">$185,000</span>
+          </div>
+          <span class="dkr-arrow">→</span>
+          <div class="dkr-after">
+            <span class="dkr-after-label">We Recovered</span>
+            <span class="dkr-after-val">$4,200,000</span>
+          </div>
+        </div>
+        <div class="dkr-location">📍 Client received 23× the initial offer</div>
+      </div>
+      <div class="dk-result-card">
+        <div class="dkr-type">Wrongful Death · San Bernardino, CA</div>
+        <div class="dkr-amounts">
+          <div class="dkr-before">
+            <span class="dkr-before-label">Insurer Offered</span>
+            <span class="dkr-before-val">$200,000</span>
+          </div>
+          <span class="dkr-arrow">→</span>
+          <div class="dkr-after">
+            <span class="dkr-after-label">We Recovered</span>
+            <span class="dkr-after-val">$2,800,000</span>
+          </div>
+        </div>
+        <div class="dkr-location">📍 Family received 14× the initial offer</div>
+      </div>
+      <div class="dk-result-card">
+        <div class="dkr-type">Rideshare Accident · Ontario, CA</div>
+        <div class="dkr-amounts">
+          <div class="dkr-before">
+            <span class="dkr-before-label">Insurer Offered</span>
+            <span class="dkr-before-val">$45,000</span>
+          </div>
+          <span class="dkr-arrow">→</span>
+          <div class="dkr-after">
+            <span class="dkr-after-label">We Recovered</span>
+            <span class="dkr-after-val">$1,500,000</span>
+          </div>
+        </div>
+        <div class="dkr-location">📍 Client received 33× the initial offer</div>
+      </div>
+    `;
+    // Insert before existing results grid
+    resultsSection.parentNode.insertBefore(dkResults, resultsSection);
+    resultsSection.style.display = 'none'; // hide old grid, replaced by DK-style cards
+  }
+
+  // ── 5. Benefits Beyond Compensation section ──
+  const whySection = document.querySelector('.why-cards');
+  if (whySection) {
+    const benefitsHeader = document.createElement('div');
+    benefitsHeader.className = 'section-header';
+    benefitsHeader.innerHTML = `<h2>Benefits Beyond Compensation</h2><div class="section-line"></div>`;
+
+    const benefits = document.createElement('div');
+    benefits.id = 'dk-benefits';
+    benefits.innerHTML = `
+      <div class="dkb-card">
+        <span class="dkb-icon">🚗</span>
+        <div class="dkb-title">Transportation Arranged</div>
+        <div class="dkb-desc">We arrange rides to medical appointments so you can focus on healing, not logistics.</div>
+      </div>
+      <div class="dkb-card">
+        <span class="dkb-icon">💼</span>
+        <div class="dkb-title">Lost Wages Covered</div>
+        <div class="dkb-desc">We pursue full compensation for every day of work you missed due to your injuries.</div>
+      </div>
+      <div class="dkb-card">
+        <span class="dkb-icon">🏥</span>
+        <div class="dkb-title">Doctor Connections</div>
+        <div class="dkb-desc">Access our network of top injury specialists — no upfront cost, treated on lien.</div>
+      </div>
+      <div class="dkb-card">
+        <span class="dkb-icon">🌎</span>
+        <div class="dkb-title">Se Habla Español</div>
+        <div class="dkb-desc">Full bilingual service. We serve Spanish-speaking clients with the same dedication.</div>
+      </div>
+    `;
+    whySection.parentNode.insertBefore(benefitsHeader, whySection.nextSibling);
+    whySection.parentNode.insertBefore(benefits, benefitsHeader.nextSibling);
+  }
+
+  // ── 6. Award Badge Wall (horizontal scroll) ──
+  const certsSection = document.querySelector('.certs');
+  if (certsSection) {
+    const awardsHeader = document.createElement('div');
+    awardsHeader.className = 'section-header';
+    awardsHeader.innerHTML = `<h2>Awards &amp; Recognition</h2><div class="section-line"></div>`;
+
+    const awards = document.createElement('div');
+    awards.id = 'dk-awards';
+    awards.innerHTML = `
+      <div id="dk-awards-inner">
+        <div class="dka-badge"><span class="dka-icon">🏆</span><span class="dka-name">Top 100 Trial Lawyers</span></div>
+        <div class="dka-badge"><span class="dka-icon">⭐</span><span class="dka-name">Avvo 10.0 Superb</span></div>
+        <div class="dka-badge"><span class="dka-icon">🥇</span><span class="dka-name">Multi-Million $ Advocates</span></div>
+        <div class="dka-badge"><span class="dka-icon">🎖️</span><span class="dka-name">Lawyers of Distinction</span></div>
+        <div class="dka-badge"><span class="dka-icon">🌟</span><span class="dka-name">Nation's Top 1%</span></div>
+        <div class="dka-badge"><span class="dka-icon">✅</span><span class="dka-name">Lead Counsel Verified</span></div>
+        <div class="dka-badge"><span class="dka-icon">🏅</span><span class="dka-name">CAALA Member</span></div>
+      </div>
+    `;
+    certsSection.parentNode.insertBefore(awardsHeader, certsSection);
+    certsSection.parentNode.insertBefore(awards, awardsHeader);
+  }
+
+  // ── 7. DK Popup (15s delay, 24h memory) ──
+  if (!localStorage.getItem('dkPopupDismissed')) {
+    const popup = document.createElement('div');
+    popup.id = 'dk-popup';
+    popup.innerHTML = `
+      <button id="dk-popup-close" aria-label="Close">✕</button>
+      <div id="dk-popup-top">
+        <div id="dk-popup-icon">⚖️</div>
+        <h3>Was It Someone<br>Else's Fault?</h3>
+      </div>
+      <p>You may be entitled to significant compensation. Get a free, no-obligation case evaluation with Attorney Mark Gonzales — available 24/7.</p>
+      <a class="dk-popup-btn primary" href="tel:18882322898">📞 Call Free Now — 1-888-232-2898</a>
+      <a class="dk-popup-btn secondary" href="sms:+19094065099">💬 Text Us Instead</a>
+      <span id="dk-popup-dismiss">No thanks, I don't want compensation</span>
+    `;
+    document.body.appendChild(popup);
+
+    setTimeout(() => popup.classList.add('dk-show'), 15000);
+
+    popup.querySelector('#dk-popup-close').onclick = () => popup.classList.remove('dk-show');
+    popup.querySelector('#dk-popup-dismiss').onclick = () => {
+      popup.classList.remove('dk-show');
+      localStorage.setItem('dkPopupDismissed', Date.now());
+    };
+  }
+
+  // ── 8. Make text CTA button green neon style ──
+  document.querySelectorAll('a.call-bar[href^="sms"]').forEach(btn => {
+    btn.classList.add('neon-cta');
+  });
+
+})();
+</script>
+
 </body>
 </html>
